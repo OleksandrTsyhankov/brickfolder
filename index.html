@@ -72,7 +72,7 @@
                 <!-- Language Selector with a dynamic flag icon and dropdown -->
                 <div class="flex items-center space-x-2">
                     <!-- Dynamic flag icon based on selection, now with a fixed width for consistent length -->
-                    <img id="flag-icon" src="https://flagcdn.com/us.svg" alt="Flag" class="w-16 h-auto">
+                    <img id="flag-icon" src="./images/us.svg" alt="Flag" class="w-16 h-auto">
                     <!-- Language dropdown, reverted to its original size -->
                     <select id="language-select" class="p-2 rounded-md border border-gray-300 shadow-sm focus:border-yellow-500 focus:ring focus:ring-yellow-500 focus:ring-opacity-50">
                         <option value="en">English</option>
@@ -239,8 +239,8 @@
             
             // Map language codes to flag URLs
             const flagMap = {
-                en: ".images/us.svg",
-                ua: ".images/ua.svg"
+                en: "./images/us.svg",
+                ua: "./images/ua.svg"
             };
 
             // Function to apply translations for static elements and re-render dynamic content
