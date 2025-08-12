@@ -126,7 +126,7 @@
                     <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.35 8.71l-6.52 3.23c-.33.16-.71-.08-.71-.45V9.45c0-.37.38-.61.71-.45l6.52 3.23c.33.17.33.43 0 .6z"/>
                     </svg>
-                </a>
+                </a>            
             </div>
         </div>
 
@@ -227,13 +227,13 @@
                 if (set) {
                     // Create the main image and thumbnail gallery HTML
                     const mainImageHtml = `<img id="main-set-image" src="${set.images[0]}" alt="LEGO Set ${set.id}" class="w-full h-auto rounded-lg shadow-lg mb-4">`;
-
                     const thumbnailsHtml = set.images.map((imageSrc, index) => 
                         `<img src="${imageSrc}" alt="Thumbnail ${index + 1}" class="thumbnail w-24 h-24 object-cover rounded-md cursor-pointer ${index === 0 ? 'active' : ''}" data-image-src="${imageSrc}">`
                     ).join('');
 
+                    // Dynamically build the new, formatted HTML for the set detail page
                     setDetailContent.innerHTML = `
-                        <h1 class="text-3xl font-bold text-gray-800">${set.name} (${set.id})</h1>
+                        <h1 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-yellow-400 pb-2">${set.name} (${set.id})</h1>
                         
                         <!-- Image Gallery -->
                         <div class="my-4">
@@ -243,14 +243,25 @@
                             </div>
                         </div>
                         
-                        <p class="text-gray-700 mb-4">${set.description}</p>
-                        <div class="grid grid-cols-2 gap-4 mt-4 text-gray-700">
-                            <div><p class="font-semibold text-gray-800">Year Released:</p><p>${set.year}</p></div>
-                            <div><p class="font-semibold text-gray-800">Piece Count:</p><p>${set.pieces}</p></div>
-                            <div><p class="font-semibold text-gray-800">Minifigures:</p><p>${set.minifigs}</p></div>
+                        <!-- Set Details Section -->
+                        <div class="bg-gray-100 p-4 rounded-lg shadow-inner mb-6">
+                            <h3 class="text-lg font-bold text-gray-800 mb-2">Set Specifications</h3>
+                            <div class="grid grid-cols-2 gap-4 text-gray-700">
+                                <div><span class="font-semibold text-gray-800">Year Released:</span> ${set.year}</div>
+                                <div><span class="font-semibold text-gray-800">Piece Count:</span> ${set.pieces}</div>
+                                <div><span class="font-semibold text-gray-800">Minifigures:</span> ${set.minifigs}</div>
+                            </div>
                         </div>
+
+                        <!-- Description Section -->
+                        <div class="bg-gray-100 p-4 rounded-lg shadow-inner mb-6">
+                            <h3 class="text-lg font-bold text-gray-800 mb-2">About This Set</h3>
+                            <p class="text-gray-700">${set.description}</p>
+                        </div>
+                        
+                        <!-- Video Section -->
                         <div class="mt-8">
-                            <h3 class="text-2xl font-bold text-gray-800 mb-4">My Review Video</h3>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-4 border-b-2 border-yellow-400 pb-2">My Review Video</h3>
                             <div class="video-container">
                                 <iframe src="${set.videoLink}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                             </div>
