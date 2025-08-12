@@ -13,7 +13,9 @@
       "year": 2023,
       "pieces": 3981,
       "minifigs": 7,
-      "videoLink": "https://www.youtube.com/embed/Pj5s0K55q24",
+      "videos": [
+        "https://www.youtube.com/embed/Pj5s0K55q24"
+      ],
       "images": [
         "https://placehold.co/600x400/94a3b8/ffffff?text=76252+Image+1",
         "https://placehold.co/600x400/64748b/ffffff?text=76252+Image+2",
@@ -33,7 +35,9 @@
       "year": 2022,
       "pieces": 405,
       "minifigs": 1,
-      "videoLink": "https://www.youtube.com/embed/0_R2iQ-z-m4",
+      "videos": [
+        "https://www.youtube.com/embed/0_R2iQ-z-m4"
+      ],
       "images": [
         "https://placehold.co/600x400/94a3b8/ffffff?text=76221+Image+1",
         "https://placehold.co/600x400/64748b/ffffff?text=76221+Image+2"

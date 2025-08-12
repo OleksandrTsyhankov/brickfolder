@@ -373,12 +373,11 @@
                 `<img src="${imageSrc}" alt="Thumbnail ${index + 1}" class="thumbnail w-24 h-24 object-cover rounded-md cursor-pointer ${index === 0 ? 'active' : ''}" data-image-src="${imageSrc}">`
             ).join('');
 
-            // Assume set.videos is an array of objects: [{ title: '...', link: '...' }]
-            const videosHtml = (set.videos || []).map(video => `
+            // Assume set.videos is an array of objects: [{ link: '...' }]
+            const videosHtml = (set.videos || []).filter(video => video && video.link).map(video => `
                 <div class="mb-4">
-                    <h4 class="text-lg font-bold mb-2">${video.title[currentLang] || video.title.en}</h4>
                     <div class="video-container">
-                        <iframe src="${video.link}" title="${video.title[currentLang] || video.title.en}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe src="${video.link}" title="Video for ${set.name[currentLang]}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </div>
             `).join('');
@@ -395,22 +394,22 @@
 
                 <!-- Set specifications in a single row -->
                 <div class="bg-gray-100 p-4 rounded-lg shadow-inner mb-6 flex flex-wrap justify-around items-center gap-4 text-center">
-                    <div class="flex-1 min-w-[150px]">
+                    ${set.pieces ? `<div class="flex-1 min-w-[150px]">
                         <p class="text-sm font-semibold">${t.pieces}</p>
                         <p class="text-xl font-bold">${set.pieces}</p>
-                    </div>
-                    <div class="flex-1 min-w-[150px]">
+                    </div>` : ''}
+                    ${set.minifigs ? `<div class="flex-1 min-w-[150px]">
                         <p class="text-sm font-semibold">${t.minifigures}</p>
                         <p class="text-xl font-bold">${set.minifigs}</p>
-                    </div>
-                    <div class="flex-1 min-w-[150px]">
+                    </div>` : ''}
+                    ${set.yearReleased ? `<div class="flex-1 min-w-[150px]">
                         <p class="text-sm font-semibold">${t.year_released}</p>
                         <p class="text-xl font-bold">${set.yearReleased}</p>
-                    </div>
-                    <div class="flex-1 min-w-[150px]">
+                    </div>` : ''}
+                    ${set.setType ? `<div class="flex-1 min-w-[150px]">
                         <p class="text-sm font-semibold">${t.set_type}</p>
                         <p class="text-xl font-bold">${set.setType}</p>
-                    </div>
+                    </div>` : ''}
                 </div>
                 
                 <!-- The "About This Set" section is now after the new specification row -->
