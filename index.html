@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,21 +10,27 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f3f4f6; /* Light gray background */
-            color: #1f2937; /* Dark text for contrast */
+            background-color: #f3f4f6;
+            /* Light gray background */
+            color: #1f2937;
+            /* Dark text for contrast */
         }
+
         /* Custom styles for better card layout */
         .card {
             @apply bg-white p-4 rounded-lg shadow-sm cursor-pointer transition-transform duration-200 hover:scale-105;
         }
+
         .video-container {
             position: relative;
             width: 100%;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            padding-bottom: 56.25%;
+            /* 16:9 aspect ratio */
             height: 0;
             overflow: hidden;
             border-radius: 0.5rem;
         }
+
         .video-container iframe {
             position: absolute;
             top: 0;
@@ -31,83 +38,105 @@
             width: 100%;
             height: 100%;
         }
+
         .loader {
-            border: 4px solid #f3f3f3; /* Light grey */
-            border-top: 4px solid #3498db; /* Blue */
+            border: 4px solid #f3f3f3;
+            /* Light grey */
+            border-top: 4px solid #3498db;
+            /* Blue */
             border-radius: 50%;
             width: 30px;
             height: 30px;
             animation: spin 1s linear infinite;
         }
+
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
+
         .thumbnail.active {
-            border: 2px solid #f97316; /* Highlight active thumbnail */
+            border: 2px solid #f97316;
+            /* Highlight active thumbnail */
             box-shadow: 0 0 5px rgba(249, 115, 22, 0.5);
         }
     </style>
+
+    <link rel="icon" href="images/logo.png" type="image/png">
+
 </head>
+
 <body class="p-4 md:p-8 flex flex-col min-h-screen">
     <!-- Main content container -->
     <div class="grid grid-cols-1 w-full max-w-7xl mx-auto">
         <!-- Main Application Column -->
         <div class="bg-white p-6 md:p-10 rounded-xl shadow-lg">
-            
+
             <!-- Logo and Language Selector Section -->
             <div class="flex flex-col sm:flex-row items-center justify-between mb-6">
                 <div id="logo" class="flex items-center justify-center sm:justify-start mb-4 sm:mb-0">
-                    <img src="./images/logo.png" 
-                        onerror="this.onerror=null;this.src='https://placehold.co/200x80/637082/ffffff?text=Your+Logo'" 
-                        alt="Your Brand Logo" 
-                        class="h-20 w-auto">
+                    <img src="./images/logo.png"
+                        onerror="this.onerror=null;this.src='https://placehold.co/200x80/637082/ffffff?text=Your+Logo'"
+                        alt="Your Brand Logo" class="h-20 w-auto">
                 </div>
                 <!-- Language Selector -->
                 <div class="flex items-center space-x-2">
                     <label for="lang-select" class="font-medium text-gray-700">Language:</label>
-                    <select id="lang-select" class="p-2 rounded-md border border-gray-300 shadow-sm focus:border-yellow-500 focus:ring focus:ring-yellow-500 focus:ring-opacity-50">
+                    <select id="lang-select"
+                        class="p-2 rounded-md border border-gray-300 shadow-sm focus:border-yellow-500 focus:ring focus:ring-yellow-500 focus:ring-opacity-50">
                         <option value="en">English</option>
                         <option value="ua">Українська</option>
                     </select>
                 </div>
             </div>
-            
+
             <!-- BrickLink Store Splash Section -->
             <div id="store_splash" class="bg-gray-100 p-6 md:p-8 rounded-xl shadow-inner mb-6 text-center">
-                <h2 data-translate="store_title" class="text-2xl font-bold text-gray-800 mb-2">Visit My BrickLink Store!</h2>
+                <h2 data-translate="store_title" class="text-2xl font-bold text-gray-800 mb-2">Visit My BrickLink Store!
+                </h2>
                 <p data-translate="store_text" class="text-gray-600 mb-4">
-                    Find new and used LEGO sets, parts, and minifigures in my store. I offer a wide selection and great prices.
+                    Find new and used LEGO sets, parts, and minifigures in my store. I offer a wide selection and great
+                    prices.
                 </p>
-                <a href="https://store.bricklink.com/BrickFolder#/shop" target="_blank" data-translate="store_button" class="inline-block px-6 py-3 bg-yellow-500 text-white font-semibold rounded-md shadow-md hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 transition-colors duration-200">
+                <a href="https://store.bricklink.com/BrickFolder#/shop" target="_blank" data-translate="store_button"
+                    class="inline-block px-6 py-3 bg-yellow-500 text-white font-semibold rounded-md shadow-md hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 transition-colors duration-200">
                     Go to the Store
                 </a>
             </div>
 
             <!-- Sets Catalog Section -->
             <div id="catalog_view" class="block">
-                <h2 data-translate="catalog_title" class="text-2xl font-bold text-center text-gray-800 mb-6">My LEGO Sets Catalog</h2>
+                <h2 data-translate="catalog_title" class="text-2xl font-bold text-center text-gray-800 mb-6">My LEGO
+                    Sets Catalog</h2>
                 <p data-translate="catalog_subtitle" class="text-sm text-center text-gray-600 mb-6">
                     A showcase of my favorite LEGO sets.
                 </p>
-                
+
                 <!-- Theme Selector and Search Bar -->
                 <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-6">
                     <div class="flex items-center w-full sm:w-auto">
-                        <label for="theme-select" data-translate="theme_label" class="mr-2 font-medium shrink-0">Select a Theme:</label>
-                        <select id="theme-select" class="p-2 rounded-md border border-gray-300 shadow-sm w-full focus:border-yellow-500 focus:ring focus:ring-yellow-500 focus:ring-opacity-50">
+                        <label for="theme-select" data-translate="theme_label" class="mr-2 font-medium shrink-0">Select
+                            a Theme:</label>
+                        <select id="theme-select"
+                            class="p-2 rounded-md border border-gray-300 shadow-sm w-full focus:border-yellow-500 focus:ring focus:ring-yellow-500 focus:ring-opacity-50">
                             <option value="">Loading themes...</option>
                         </select>
                     </div>
                     <div class="flex items-center w-full sm:w-auto">
                         <label for="search_input" class="sr-only">Search</label>
-                        <input type="text" id="search_input" placeholder="Search sets..." class="p-2 rounded-md border border-gray-300 shadow-sm w-full focus:border-yellow-500 focus:ring focus:ring-yellow-500 focus:ring-opacity-50">
+                        <input type="text" id="search_input" placeholder="Search sets..."
+                            class="p-2 rounded-md border border-gray-300 shadow-sm w-full focus:border-yellow-500 focus:ring focus:ring-yellow-500 focus:ring-opacity-50">
                     </div>
                 </div>
 
                 <div id="sets_catalog" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                     <!-- Set cards will be dynamically populated here -->
-                    </div>
+                </div>
                 <!-- Loading indicator -->
                 <div id="loader" class="flex justify-center my-8 hidden">
                     <div class="loader"></div>
@@ -116,12 +145,13 @@
 
             <!-- Individual Set Detail Section (initially hidden) -->
             <div id="set_detail_view" class="hidden">
-                <button id="back_to_catalog" data-translate="back_button" class="mb-4 text-blue-600 hover:text-blue-800 font-medium">
+                <button id="back_to_catalog" data-translate="back_button"
+                    class="mb-4 text-blue-600 hover:text-blue-800 font-medium">
                     &larr; Back to Catalog
                 </button>
                 <div id="set_detail_content" class="space-y-4">
                     <!-- Set details will be dynamically populated here -->
-                    </div>
+                </div>
             </div>
         </div>
 
@@ -129,18 +159,32 @@
         <div class="bg-white p-6 md:p-10 rounded-xl shadow-lg mt-8 text-center">
             <h2 data-translate="connect_title" class="text-2xl font-bold text-gray-800 mb-4">Connect With Me</h2>
             <div class="flex justify-center space-x-6">
-                <a href="https://www.instagram.com/your-username" target="_blank" class="text-gray-400 hover:text-yellow-500 transition-colors duration-200" title="Instagram">
-                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.851.07 1.171.055 1.835.249 2.227.406.408.163.78.4.992.613.21.21.45.584.613.992.157.392.351 1.056.406 2.227.058 1.267.07 1.647.07 4.851s-.012 3.584-.07 4.851c-.055 1.171-.249 1.835-.406 2.227-.163.408-.4.78-.613.992-.21.21-.584.45-.992.613-.392.157-1.056.351-2.227.406-1.267.058-1.647.07-4.851.07s-3.584-.012-4.851-.07c-1.171-.055-1.835-.249-2.227-.406-.408-.163-.78-.4-.992-.613-.21-.21-.45-.584-.613-.992-.157-.392-.351-1.056-.406-2.227-.058-1.267-.07-1.647-.07-4.851s.012-3.584.07-4.851c.055-1.171.249-1.835.406-2.227.163-.408.4-.78.613-.992.21-.21.584-.45.992-.613.392-.157 1.056-.351 2.227-.406 1.267-.058 1.647-.07 4.851-.07zm0-2.163c-3.267 0-3.691.013-4.994.072-1.303.06-2.126.26-2.827.545-.71.291-1.294.757-1.764 1.228-.47.47-.937 1.054-1.228 1.764-.285.701-.485 1.524-.545 2.827-.059 1.303-.072 1.727-.072 4.994s.013 3.691.072 4.994c.06 1.303.26 2.126.545 2.827.291.71.757 1.294 1.228 1.764.47.47 1.054.937 1.764 1.228.701.285 1.524.485 2.827.545 1.303.059 1.727.072 4.994.072s3.691-.013 4.994-.072c1.303-.06 2.126-.26 2.827-.545.71-.291 1.294-.757 1.764-1.228.47-.47.937-1.054 1.764-1.228.285-.701.485-1.524.545-2.827.059-1.303.072-1.727.072-4.994s-.013-3.691-.072-4.994c-.06-1.303-.26-2.126-.545-2.827-.291-.71-.757-1.294-1.228-1.764-.47-.47-1.054-.937-1.764-1.228-.701-.285-1.524-.485-2.827-.545-1.303-.059-1.727-.072-4.994-.072zM12 6.865a5.135 5.135 0 100 10.27 5.135 5.135 0 000-10.27zm0 8.411a3.276 3.276 0 110-6.552 3.276 3.276 0 010 6.552zM16.994 6.883a1.215 1.215 0 100 2.43 1.215 1.215 0 000-2.43z"/></svg>
-                </a>
-                <a href="https://www.youtube.com/your-channel" target="_blank" class="text-gray-400 hover:text-yellow-500 transition-colors duration-200" title="YouTube">
-                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21.583 6.47c-.201-.762-.75-1.312-1.512-1.513C18.22 4.417 12 4.417 12 4.417S5.78 4.417 3.929 4.957c-.762.201-1.312.75-1.513 1.513C1.85 8.322 1.85 12 1.85 12s0 3.678.566 5.53c.201.762.75 1.312 1.513 1.513C5.78 19.583 12 19.583 12 19.583s6.22 0 8.071-.54c.762-.201 1.312-.75 1.513-1.513.566-1.852.566-5.53.566-5.53s0-3.678-.566-5.53zM9.916 15.228V8.772L15.341 12l-5.425 3.228z"/></svg>
-                </a>
-                <a href="https://www.facebook.com/your-page" target="_blank" class="text-gray-400 hover:text-yellow-500 transition-colors duration-200" title="Facebook">
-                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163C6.486 2.163 2 6.273 2 11.233c0 4.437 3.237 8.163 7.558 8.917v-6.353H6.702v-2.564h2.856V9.08c0-2.825 1.63-4.385 4.195-4.385 1.205 0 2.247.09 2.553.13v2.96h-1.65c-1.302 0-1.558.62-1.558 1.53v2.016h3.29l-.527 2.564h-2.763v6.353C18.763 19.396 23 15.67 23 11.233c0-4.96-4.486-9.07-9.917-9.07z"/></svg>
-                </a>
-                <a href="https://t.me/your-username" target="_blank" class="text-gray-400 hover:text-yellow-500 transition-colors duration-200" title="Telegram">
+                <a href="https://www.instagram.com/your-username" target="_blank"
+                    class="text-gray-400 hover:text-yellow-500 transition-colors duration-200" title="Instagram">
                     <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.35 8.71l-6.52 3.23c-.33.16-.71-.08-.71-.45V9.45c0-.37.38-.61.71-.45l6.52 3.23c.33.17.33.43 0 .6z"/>
+                        <path
+                            d="M12 2.163c3.204 0 3.584.012 4.851.07 1.171.055 1.835.249 2.227.406.408.163.78.4.992.613.21.21.45.584.613.992.157.392.351 1.056.406 2.227.058 1.267.07 1.647.07 4.851s-.012 3.584-.07 4.851c-.055 1.171-.249 1.835-.406 2.227-.163.408-.4.78-.613.992-.21.21-.584.45-.992.613-.392.157-1.056.351-2.227.406-1.267.058-1.647.07-4.851.07s-3.584-.012-4.851-.07c-1.171-.055-1.835-.249-2.227-.406-.408-.163-.78-.4-.992-.613-.21-.21-.45-.584-.613-.992-.157-.392-.351-1.056-.406-2.227-.058-1.267-.07-1.647-.07-4.851s.012-3.584.07-4.851c.055-1.171.249-1.835.406-2.227.163-.408.4-.78.613-.992.21-.21.584-.45.992-.613.392-.157 1.056-.351 2.227-.406 1.267-.058 1.647-.07 4.851-.07zm0-2.163c-3.267 0-3.691.013-4.994.072-1.303.06-2.126.26-2.827.545-.71.291-1.294.757-1.764 1.228-.47.47-.937 1.054-1.228 1.764-.285.701-.485 1.524-.545 2.827-.059 1.303-.072 1.727-.072 4.994s.013 3.691.072 4.994c.06 1.303.26 2.126.545 2.827.291.71.757 1.294 1.228 1.764.47.47 1.054.937 1.764 1.228.701.285 1.524.485 2.827.545 1.303.059 1.727.072 4.994.072s3.691-.013 4.994-.072c1.303-.06 2.126-.26 2.827-.545.71-.291 1.294-.757 1.764-1.228.47-.47.937-1.054 1.764-1.228.285-.701.485-1.524.545-2.827.059-1.303.072-1.727.072-4.994s-.013-3.691-.072-4.994c-.06-1.303-.26-2.126-.545-2.827-.291-.71-.757-1.294-1.228-1.764-.47-.47-1.054-.937-1.764-1.228-.701-.285-1.524-.485-2.827-.545-1.303-.059-1.727-.072-4.994-.072zM12 6.865a5.135 5.135 0 100 10.27 5.135 5.135 0 000-10.27zm0 8.411a3.276 3.276 0 110-6.552 3.276 3.276 0 010 6.552zM16.994 6.883a1.215 1.215 0 100 2.43 1.215 1.215 0 000-2.43z" />
+                    </svg>
+                </a>
+                <a href="https://www.youtube.com/your-channel" target="_blank"
+                    class="text-gray-400 hover:text-yellow-500 transition-colors duration-200" title="YouTube">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M21.583 6.47c-.201-.762-.75-1.312-1.512-1.513C18.22 4.417 12 4.417 12 4.417S5.78 4.417 3.929 4.957c-.762.201-1.312.75-1.513 1.513C1.85 8.322 1.85 12 1.85 12s0 3.678.566 5.53c.201.762.75 1.312 1.513 1.513C5.78 19.583 12 19.583 12 19.583s6.22 0 8.071-.54c.762-.201 1.312-.75 1.513-1.513.566-1.852.566-5.53.566-5.53s0-3.678-.566-5.53zM9.916 15.228V8.772L15.341 12l-5.425 3.228z" />
+                    </svg>
+                </a>
+                <a href="https://www.facebook.com/your-page" target="_blank"
+                    class="text-gray-400 hover:text-yellow-500 transition-colors duration-200" title="Facebook">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M12 2.163C6.486 2.163 2 6.273 2 11.233c0 4.437 3.237 8.163 7.558 8.917v-6.353H6.702v-2.564h2.856V9.08c0-2.825 1.63-4.385 4.195-4.385 1.205 0 2.247.09 2.553.13v2.96h-1.65c-1.302 0-1.558.62-1.558 1.53v2.016h3.29l-.527 2.564h-2.763v6.353C18.763 19.396 23 15.67 23 11.233c0-4.96-4.486-9.07-9.917-9.07z" />
+                    </svg>
+                </a>
+                <a href="https://t.me/your-username" target="_blank"
+                    class="text-gray-400 hover:text-yellow-500 transition-colors duration-200" title="Telegram">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.35 8.71l-6.52 3.23c-.33.16-.71-.08-.71-.45V9.45c0-.37.38-.61.71-.45l6.52 3.23c.33.17.33.43 0 .6z" />
                     </svg>
                 </a>
             </div>
@@ -209,7 +253,7 @@
                     preview_text_snippet: "..."
                 }
             };
-            
+
             // Function to apply translations for static elements and re-render dynamic content
             const setLanguage = (lang) => {
                 const translation = translations[lang];
@@ -221,7 +265,7 @@
                 });
                 searchInput.placeholder = translation.search_placeholder;
                 document.querySelector('#sets_catalog').setAttribute('data-no-sets-message', translation.no_sets_found);
-                
+
                 // Re-render the sets catalog cards to show the correct language
                 loadSets(themeSelect.value, searchInput.value);
 
@@ -240,7 +284,7 @@
             // This function fetches data from all theme-specific JSON files.
             const fetchAllData = async () => {
                 loader.classList.remove('hidden'); // Show loader
-                const fetchPromises = themeFiles.map(fileName => 
+                const fetchPromises = themeFiles.map(fileName =>
                     fetch(`./data/${fileName}`).then(response => {
                         if (!response.ok) {
                             throw new Error(`Failed to load ${fileName}: ${response.statusText}`);
@@ -254,7 +298,7 @@
                 );
 
                 const results = await Promise.all(fetchPromises);
-                
+
                 // Merge all the data from the fetched files into a single object.
                 let mergedData = {};
                 results.forEach(data => {
@@ -289,7 +333,7 @@
                         setsToDisplay = setsToDisplay.concat(allData[theme]);
                     }
                 }
-                
+
                 const currentLang = langSelect.value;
                 // Filter the sets based on the search term, checking both languages for name and description
                 const lowerCaseSearchTerm = searchTerm.toLowerCase();
@@ -331,10 +375,10 @@
                 if (set) {
                     const currentLang = langSelect.value;
                     const t = translations[currentLang];
-                    
+
                     // Create the main image and thumbnail gallery HTML
                     const mainImageHtml = `<img id="main-set-image" src="${set.images[0]}" alt="LEGO Set ${set.id}" class="w-full h-auto rounded-lg shadow-lg mb-4">`;
-                    const thumbnailsHtml = set.images.map((imageSrc, index) => 
+                    const thumbnailsHtml = set.images.map((imageSrc, index) =>
                         `<img src="${imageSrc}" alt="Thumbnail ${index + 1}" class="thumbnail w-24 h-24 object-cover rounded-md cursor-pointer ${index === 0 ? 'active' : ''}" data-image-src="${imageSrc}">`
                     ).join('');
 
@@ -382,7 +426,7 @@
                         thumbnail.addEventListener('click', () => {
                             // Update main image source
                             mainImage.src = thumbnail.getAttribute('data-image-src');
-                            
+
                             // Update active state of thumbnails
                             thumbnails.forEach(t => t.classList.remove('active'));
                             thumbnail.classList.add('active');
@@ -405,7 +449,7 @@
             };
 
             backButton.addEventListener('click', showCatalog);
-            
+
             themeSelect.addEventListener('change', (event) => {
                 const selectedTheme = event.target.value;
                 loadSets(selectedTheme, searchInput.value);
@@ -429,4 +473,5 @@
         });
     </script>
 </body>
+
 </html>
