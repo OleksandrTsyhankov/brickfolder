@@ -221,9 +221,24 @@
             const showSetDetail = (setId) => {
                 const set = currentSets.find(s => s.id === setId);
                 if (set) {
+                    // Create the main image and thumbnail gallery HTML
+                    const mainImageHtml = `<img id="main-set-image" src="${set.images[0]}" alt="LEGO Set ${set.id}" class="w-full h-auto rounded-lg shadow-lg mb-4">`;
+
+                    const thumbnailsHtml = set.images.map((imageSrc, index) => 
+                        `<img src="${imageSrc}" alt="Thumbnail ${index + 1}" class="thumbnail w-24 h-24 object-cover rounded-md cursor-pointer ${index === 0 ? 'active' : ''}" data-image-src="${imageSrc}">`
+                    ).join('');
+
                     setDetailContent.innerHTML = `
                         <h1 class="text-3xl font-bold text-gray-800">${set.name} (${set.id})</h1>
-                        <img src="${set.image}" alt="LEGO Set ${set.id}" class="w-full h-auto rounded-lg shadow-lg my-4">
+                        
+                        <!-- Image Gallery -->
+                        <div class="my-4">
+                            ${mainImageHtml}
+                            <div id="thumbnail-gallery" class="flex space-x-2 overflow-x-auto mt-2">
+                                ${thumbnailsHtml}
+                            </div>
+                        </div>
+                        
                         <p class="text-gray-700 mb-4">${set.description}</p>
                         <div class="grid grid-cols-2 gap-4 mt-4 text-gray-700">
                             <div><p class="font-semibold text-gray-800">Year Released:</p><p>${set.year}</p></div>
@@ -237,6 +252,21 @@
                             </div>
                         </div>
                     `;
+
+                    // Add event listener for the thumbnails after they have been added to the DOM
+                    const thumbnails = document.querySelectorAll('.thumbnail');
+                    const mainImage = document.getElementById('main-set-image');
+                    thumbnails.forEach(thumbnail => {
+                        thumbnail.addEventListener('click', () => {
+                            // Update main image source
+                            mainImage.src = thumbnail.getAttribute('data-image-src');
+                            
+                            // Update active state of thumbnails
+                            thumbnails.forEach(t => t.classList.remove('active'));
+                            thumbnail.classList.add('active');
+                        });
+                    });
+
                     catalogView.classList.add('hidden');
                     setDetailView.classList.remove('hidden');
                 }

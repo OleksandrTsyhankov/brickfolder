@@ -4,7 +4,11 @@
       "id": "75978",
       "name": "Diagon Alley",
       "description": "A detailed LEGO Harry Potter set.",
-      "image": "https://placehold.co/400x300/e8e8e8/333333?text=Diagon+Alley+Set",
+      "images": [
+        "https://placehold.co/800x600/e8e8e8/333333?text=Diagon+Alley+Image+1",
+        "https://placehold.co/800x600/e8e8e8/333333?text=Diagon+Alley+Image+2",
+        "https://placehold.co/800x600/e8e8e8/333333?text=Diagon+Alley+Image+3"
+      ],
       "year": 2020,
       "pieces": 5544,
       "minifigs": 14,
@@ -14,7 +18,11 @@
       "id": "71043",
       "name": "Hogwarts Castle",
       "description": "An immense microscale recreation of the Hogwarts Castle.",
-      "image": "https://placehold.co/400x300/e8e8e8/333333?text=Hogwarts+Castle+Set",
+      "images": [
+        "https://placehold.co/800x600/e8e8e8/333333?text=Hogwarts+Castle+Image+1",
+        "https://placehold.co/800x600/e8e8e8/333333?text=Hogwarts+Castle+Image+2",
+        "https://placehold.co/800x600/e8e8e8/333333?text=Hogwarts+Castle+Image+3"
+      ],
       "year": 2018,
       "pieces": 6020,
       "minifigs": 4,
