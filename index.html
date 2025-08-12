@@ -32,7 +32,7 @@
             height: 100%;
         }
         .loader {
-            border: 4-px solid #f3f3f3; /* Light grey */
+            border: 4px solid #f3f3f3; /* Light grey */
             border-top: 4px solid #3498db; /* Blue */
             border-radius: 50%;
             width: 30px;
@@ -46,6 +46,51 @@
         .thumbnail.active {
             border: 2px solid #f97316; /* Highlight active thumbnail */
             box-shadow: 0 0 5px rgba(249, 115, 22, 0.5);
+        }
+
+        /* New custom styles for the image gallery with navigation */
+        .main-image-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 75%; /* Maintain a 4:3 aspect ratio */
+            border-radius: 0.5rem;
+            overflow: hidden;
+            background-color: #e5e7eb;
+        }
+        .main-image-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Use contain to show full image without cropping */
+        }
+        .nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            font-size: 1.5rem;
+            user-select: none;
+            transition: background-color 0.2s;
+            z-index: 10;
+        }
+        .nav-arrow:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .nav-arrow.left {
+            left: 0.5rem;
+            border-top-left-radius: 0.25rem;
+            border-bottom-left-radius: 0.25rem;
+        }
+        .nav-arrow.right {
+            right: 0.5rem;
+            border-top-right-radius: 0.25rem;
+            border-bottom-right-radius: 0.25rem;
         }
     </style>
 
@@ -191,6 +236,8 @@
             let allData = {};
             let currentSets = [];
             let currentSetId = null;
+            let currentImages = []; // Array to hold images for the current set
+            let currentImageIndex = 0; // Index for the current image being displayed
 
             const translations = {
                 en: {
@@ -295,17 +342,17 @@
                 // Merge all the data from the fetched files into a single object.
                 let mergedData = {};
                 results.forEach(data => {
-            Object.assign(mergedData, data);
-        });
-        loader.classList.add('hidden'); // Hide loader
-        return mergedData;
+                    Object.assign(mergedData, data);
+                });
+                loader.classList.add('hidden'); // Hide loader
+                return mergedData;
             };
 
             const loadThemes = () => {
                 const themes = Object.keys(allData);
                 const currentLang = languageSelect.value || 'en';
                 const allThemesText = translations[currentLang].all_themes;
-        const loadingThemesText = translations[currentLang].loading_themes;
+                const loadingThemesText = translations[currentLang].loading_themes;
                 
                 themeSelect.innerHTML = `<option value="">${allThemesText}</option>`;
                 themes.forEach(theme => {
@@ -361,15 +408,32 @@
                 renderSetsCatalog(currentSets);
             };
 
+            const updateMainImage = () => {
+                const mainImage = document.getElementById('main-set-image');
+                const thumbnails = document.querySelectorAll('.thumbnail');
+                if (mainImage && thumbnails.length > 0) {
+                    // Update main image source
+                    mainImage.src = currentImages[currentImageIndex];
+
+                    // Update active thumbnail class
+                    thumbnails.forEach((t, index) => {
+                        t.classList.toggle('active', index === currentImageIndex);
+                    });
+                }
+            };
+            
             const renderSetDetail = (setId) => {
                 const set = allData[themeSelect.value]?.find(s => s.id === setId) || Object.values(allData).flat().find(s => s.id === setId);
                 if (set) {
                     const currentLang = languageSelect.value || 'en';
                     const t = translations[currentLang];
                     
-                    const mainImageHtml = `<img id="main-set-image" src="${set.images[0]}" alt="LEGO Set ${set.id}" class="w-full h-auto rounded-lg shadow-lg mb-4">`;
-                    const thumbnailsHtml = set.images.map((imageSrc, index) => 
-                        `<img src="${imageSrc}" alt="Thumbnail ${index + 1}" class="thumbnail w-24 h-24 object-cover rounded-md cursor-pointer ${index === 0 ? 'active' : ''}" data-image-src="${imageSrc}">`
+                    // Reset image data for the new set
+                    currentImages = set.images || [];
+                    currentImageIndex = 0;
+
+                    const thumbnailsHtml = currentImages.map((imageSrc, index) => 
+                        `<img src="${imageSrc}" alt="Thumbnail ${index + 1}" class="thumbnail w-24 h-24 object-contain rounded-md cursor-pointer ${index === 0 ? 'active' : ''}" data-image-index="${index}">`
                     ).join('');
 
                     // Assume set.videos is an array of objects: [{ link: '...' }]
@@ -385,7 +449,11 @@
                         <h1 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-yellow-400 pb-2">${set.name[currentLang]} (${set.id})</h1>
                         
                         <div class="my-4">
-                            ${mainImageHtml}
+                            <div class="main-image-container mb-4">
+                                <img id="main-set-image" src="${currentImages[0]}" alt="LEGO Set ${set.id}" class="w-full h-full rounded-lg shadow-lg">
+                                <button id="prev-image" class="nav-arrow left">&lt;</button>
+                                <button id="next-image" class="nav-arrow right">&gt;</button>
+                            </div>
                             <div id="thumbnail-gallery" class="flex space-x-2 overflow-x-auto mt-2">
                                 ${thumbnailsHtml}
                             </div>
@@ -423,13 +491,21 @@
                         </div>
                     `;
 
-                    const thumbnails = document.querySelectorAll('.thumbnail');
-                    const mainImage = document.getElementById('main-set-image');
-                    thumbnails.forEach(thumbnail => {
-                        thumbnail.addEventListener('click', () => {
-                            mainImage.src = thumbnail.getAttribute('data-image-src');
-                            thumbnails.forEach(t => t.classList.remove('active'));
-                            thumbnail.classList.add('active');
+                    // Add event listeners for the new navigation buttons and thumbnails
+                    document.getElementById('prev-image').addEventListener('click', () => {
+                        currentImageIndex = (currentImageIndex - 1 + currentImages.length) % currentImages.length;
+                        updateMainImage();
+                    });
+                    document.getElementById('next-image').addEventListener('click', () => {
+                        currentImageIndex = (currentImageIndex + 1) % currentImages.length;
+                        updateMainImage();
+                    });
+
+                    document.querySelectorAll('.thumbnail').forEach(thumbnail => {
+                        thumbnail.addEventListener('click', (event) => {
+                            const index = parseInt(event.target.getAttribute('data-image-index'), 10);
+                            currentImageIndex = index;
+                            updateMainImage();
                         });
                     });
                 }
