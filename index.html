@@ -280,7 +280,6 @@
                     minifigures: "Minifigures",
                     year_released: "Year Released",
                     age: "Age",
-                    now_playing: "Now Playing:",
                     no_videos_found: "No videos available for this set."
                 },
                 ua: {
@@ -303,7 +302,6 @@
                     minifigures: "Мініфігурки",
                     year_released: "Рік випуску",
                     age: "Вік",
-                    now_playing: "Зараз відтворюється:",
                     no_videos_found: "Відео для цього набору немає."
                 }
             };
@@ -347,7 +345,7 @@
 
             // This function fetches data from all theme-specific JSON files.
             const fetchAllData = async () => {
-                loader.classList.remove('hidden'); // Show loader
+                loader.classList.remove('hidden');
                 const fetchPromises = themeFiles.map(fileName => 
                     fetch(`./data/${fileName}`).then(response => {
                         if (!response.ok) {
@@ -368,7 +366,7 @@
                 results.forEach(data => {
                     Object.assign(mergedData, data);
                 });
-                loader.classList.add('hidden'); // Hide loader
+                loader.classList.add('hidden');
                 return mergedData;
             };
 
@@ -376,7 +374,6 @@
                 const themes = Object.keys(allData);
                 const currentLang = languageSelect.value || 'en';
                 const allThemesText = translations[currentLang].all_themes;
-                const loadingThemesText = translations[currentLang].loading_themes;
                 
                 themeSelect.innerHTML = `<option value="">${allThemesText}</option>`;
                 themes.forEach(theme => {
@@ -446,59 +443,6 @@
                 }
             };
             
-            // NEW: Function to render the video gallery list
-            const renderVideoGallery = (videos) => {
-                const videoListElement = document.getElementById('video-list');
-                const t = translations[languageSelect.value || 'en'];
-
-                // Clear the list
-                videoListElement.innerHTML = ''; 
-
-                if (videos.length === 0) {
-                    videoListElement.innerHTML = `<p class="text-sm text-center text-gray-500">${t.no_videos_found}</p>`;
-                    return;
-                }
-
-                videos.forEach((video, index) => {
-                    const listItem = document.createElement('li');
-                    listItem.textContent = video.title;
-                    listItem.classList.add(
-                        'p-3', 'rounded-lg', 'cursor-pointer', 'transition-all', 'duration-200'
-                    );
-
-                    // Add a special class for the currently selected video
-                    if (index === currentVideoIndex) {
-                        listItem.classList.add('bg-gray-200', 'text-gray-800', 'font-semibold', 'shadow-sm');
-                    } else {
-                        listItem.classList.add('hover:bg-gray-100');
-                    }
-
-                    // Add an event listener to update the video player when a video is clicked
-                    listItem.addEventListener('click', () => {
-                        updateVideoPlayer(index);
-                    });
-
-                    videoListElement.appendChild(listItem);
-                });
-            };
-
-            // NEW: Function to update the video player and list
-            const updateVideoPlayer = (index) => {
-                const videoPlayerElement = document.getElementById('video-player');
-                const nowPlayingTitleElement = document.getElementById('now-playing-title');
-                const t = translations[languageSelect.value || 'en'];
-                
-                const video = currentVideos[index];
-                if (video) {
-                    videoPlayerElement.src = video.link;
-                    nowPlayingTitleElement.textContent = `${t.now_playing} ${video.title}`;
-                    
-                    // Update the selected video index and re-render the list to update styling
-                    currentVideoIndex = index;
-                    renderVideoGallery(currentVideos);
-                }
-            };
-
             const renderSetDetail = (setId) => {
                 const set = allData[themeSelect.value]?.find(s => s.id === setId) || Object.values(allData).flat().find(s => s.id === setId);
                 if (set) {
@@ -508,44 +452,25 @@
                     currentImages = set.images || [];
                     currentImageIndex = 0;
                     currentVideos = set.videos || [];
-                    currentVideoIndex = 0;
 
                     const thumbnailsHtml = currentImages.map((imageSrc, index) => 
                         `<img src="${imageSrc}" alt="Thumbnail ${index + 1}" class="thumbnail w-24 h-24 object-contain rounded-md cursor-pointer ${index === 0 ? 'active' : ''}" data-image-index="${index}">`
                     ).join('');
 
-                    // The new HTML for the video gallery
-                    const videoGalleryHtml = `
-                        <div class="flex flex-col lg:flex-row gap-6">
-                            <!-- Left Column: Video List -->
-                            <div class="lg:w-1/3 flex-shrink-0">
-                                <div class="bg-gray-100 rounded-xl p-4 h-[400px] overflow-y-auto custom-scrollbar">
-                                    <h4 class="text-md font-semibold mb-2 text-gray-800">Video List</h4>
-                                    <ul id="video-list" class="space-y-2">
-                                        <!-- Video list items will be populated here by JavaScript -->
-                                    </ul>
-                                </div>
-                            </div>
-                            <!-- Right Column: Video Player -->
-                            <div class="lg:w-2/3 flex-grow">
-                                <div class="bg-gray-100 rounded-xl p-4 flex flex-col h-full">
-                                    <h4 id="now-playing-title" class="text-md font-semibold mb-2 text-gray-800 truncate">
-                                        ${t.now_playing}
-                                    </h4>
-                                    <div class="relative w-full" style="padding-bottom: 56.25%;">
-                                        <iframe
-                                            id="video-player"
-                                            class="absolute top-0 left-0 w-full h-full rounded-lg shadow-lg"
-                                            title="Video Player"
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                            allowfullscreen
-                                            frameborder="0"
-                                        ></iframe>
-                                    </div>
-                                </div>
-                            </div>
+                    // Simplified HTML for the video gallery
+                    const videoGalleryHtml = set.videos && set.videos.length > 0 ? `
+                        <div class="relative w-full" style="padding-bottom: 56.25%;">
+                            <iframe
+                                id="video-player"
+                                class="absolute top-0 left-0 w-full h-full rounded-lg shadow-lg"
+                                src="${set.videos[0].link}"
+                                title="Video Player"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen
+                                frameborder="0"
+                            ></iframe>
                         </div>
-                    `;
+                    ` : `<p class="text-sm text-center text-gray-500">${t.no_videos_found}</p>`;
 
                     setDetailContent.innerHTML = `
                         <h1 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-yellow-400 pb-2">${set.name[currentLang]} (${set.id})</h1>
@@ -610,15 +535,6 @@
                             updateMainImage();
                         });
                     });
-
-                    // NEW: Initialize the video gallery
-                    if (currentVideos.length > 0) {
-                        updateVideoPlayer(currentVideoIndex);
-                        renderVideoGallery(currentVideos);
-                    } else {
-                        // Handle the case where there are no videos
-                        renderVideoGallery([]);
-                    }
                 }
             };
 
