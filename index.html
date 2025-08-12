@@ -59,9 +59,9 @@
             <div class="flex flex-col sm:flex-row items-center justify-between mb-6">
                 <div id="logo" class="flex items-center justify-center sm:justify-start mb-4 sm:mb-0">
                     <img src="./images/logo.png" 
-                         onerror="this.onerror=null;this.src='https://placehold.co/200x80/637082/ffffff?text=Your+Logo'" 
-                         alt="Your Brand Logo" 
-                         class="h-20 w-auto">
+                        onerror="this.onerror=null;this.src='https://placehold.co/200x80/637082/ffffff?text=Your+Logo'" 
+                        alt="Your Brand Logo" 
+                        class="h-20 w-auto">
                 </div>
                 <!-- Language Selector -->
                 <div class="flex items-center space-x-2">
@@ -289,9 +289,10 @@
                 // Filter the sets based on the search term, checking both languages for name and description
                 const lowerCaseSearchTerm = searchTerm.toLowerCase();
                 const filteredSets = setsToDisplay.filter(set =>
-                    set.name[currentLang].toLowerCase().includes(lowerCaseSearchTerm) ||
-                    set.description[currentLang].toLowerCase().includes(lowerCaseSearchTerm) ||
-                    set.id.toLowerCase().includes(lowerCaseSearchTerm)
+                    // Using a logical OR (`|| ''`) to ensure a string value is always present before calling `toLowerCase()`
+                    (set.name?.[currentLang] || '').toLowerCase().includes(lowerCaseSearchTerm) ||
+                    (set.description?.[currentLang] || '').toLowerCase().includes(lowerCaseSearchTerm) ||
+                    (set.id || '').toLowerCase().includes(lowerCaseSearchTerm)
                 );
 
                 currentSets = filteredSets; // Store the filtered sets globally
@@ -312,7 +313,7 @@
                     setCard.innerHTML = `
                         <img src="${set.images[0]}" alt="LEGO Set ${set.id}" class="w-full h-auto rounded-md mb-2">
                         <h3 class="font-semibold text-lg text-gray-800">${set.name[currentLang]} (${set.id})</h3>
-                        <p class="text-sm text-gray-600">${set.description[currentLang].substring(0, 70)}${translations[currentLang].preview_text_snippet}</p>
+                        <p class="text-sm text-gray-600">${(set.description?.[currentLang] || '').substring(0, 70)}${translations[currentLang].preview_text_snippet}</p>
                     `;
                     setCard.addEventListener('click', () => showSetDetail(set.id));
                     setsCatalog.appendChild(setCard);
@@ -345,7 +346,7 @@
                         
                         <!-- Set Details Section (now in a single row) -->
                         <div class="bg-gray-100 p-4 rounded-lg shadow-inner mb-6">
-                            // <h3 class="text-lg font-bold text-gray-800 mb-2">${t.set_specifications}</h3>
+                            <h3 class="text-lg font-bold text-gray-800 mb-2">${t.set_specifications}</h3>
                             <div class="flex flex-wrap gap-4 justify-between text-gray-700">
                                 <div><span class="font-semibold text-gray-800">${t.year_released}</span> ${set.year}</div>
                                 <div><span class="font-semibold text-gray-800">${t.piece_count}</span> ${set.pieces}</div>
