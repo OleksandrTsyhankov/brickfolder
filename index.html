@@ -6,6 +6,9 @@
     <title>My LEGO Sets and Content Dashboard</title>
     <!-- Tailwind CSS CDN for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -91,6 +94,19 @@
             right: 0.5rem;
             border-top-right-radius: 0.25rem;
             border-bottom-right-radius: 0.25rem;
+        }
+
+        /* Custom scrollbar for the video list */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #e5e7eb;
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #d1d5db;
+            border-radius: 10px;
         }
     </style>
 
@@ -236,8 +252,12 @@
             let allData = {};
             let currentSets = [];
             let currentSetId = null;
-            let currentImages = []; // Array to hold images for the current set
-            let currentImageIndex = 0; // Index for the current image being displayed
+            let currentImages = []; 
+            let currentImageIndex = 0; 
+            
+            // Global variables for the video gallery
+            let currentVideos = [];
+            let currentVideoIndex = 0;
 
             const translations = {
                 en: {
@@ -259,7 +279,9 @@
                     pieces: "Pieces",
                     minifigures: "Minifigures",
                     year_released: "Year Released",
-                    age: "Age"
+                    age: "Age",
+                    now_playing: "Now Playing:",
+                    no_videos_found: "No videos available for this set."
                 },
                 ua: {
                     store_title: "Відвідайте мій магазин на BrickLink!",
@@ -280,7 +302,9 @@
                     pieces: "Деталі",
                     minifigures: "Мініфігурки",
                     year_released: "Рік випуску",
-                    age: "Вік"
+                    age: "Вік",
+                    now_playing: "Зараз відтворюється:",
+                    no_videos_found: "Відео для цього набору немає."
                 }
             };
             
@@ -422,28 +446,106 @@
                 }
             };
             
+            // NEW: Function to render the video gallery list
+            const renderVideoGallery = (videos) => {
+                const videoListElement = document.getElementById('video-list');
+                const t = translations[languageSelect.value || 'en'];
+
+                // Clear the list
+                videoListElement.innerHTML = ''; 
+
+                if (videos.length === 0) {
+                    videoListElement.innerHTML = `<p class="text-sm text-center text-gray-500">${t.no_videos_found}</p>`;
+                    return;
+                }
+
+                videos.forEach((video, index) => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = video.title;
+                    listItem.classList.add(
+                        'p-3', 'rounded-lg', 'cursor-pointer', 'transition-all', 'duration-200'
+                    );
+
+                    // Add a special class for the currently selected video
+                    if (index === currentVideoIndex) {
+                        listItem.classList.add('bg-gray-200', 'text-gray-800', 'font-semibold', 'shadow-sm');
+                    } else {
+                        listItem.classList.add('hover:bg-gray-100');
+                    }
+
+                    // Add an event listener to update the video player when a video is clicked
+                    listItem.addEventListener('click', () => {
+                        updateVideoPlayer(index);
+                    });
+
+                    videoListElement.appendChild(listItem);
+                });
+            };
+
+            // NEW: Function to update the video player and list
+            const updateVideoPlayer = (index) => {
+                const videoPlayerElement = document.getElementById('video-player');
+                const nowPlayingTitleElement = document.getElementById('now-playing-title');
+                const t = translations[languageSelect.value || 'en'];
+                
+                const video = currentVideos[index];
+                if (video) {
+                    videoPlayerElement.src = video.link;
+                    nowPlayingTitleElement.textContent = `${t.now_playing} ${video.title}`;
+                    
+                    // Update the selected video index and re-render the list to update styling
+                    currentVideoIndex = index;
+                    renderVideoGallery(currentVideos);
+                }
+            };
+
             const renderSetDetail = (setId) => {
                 const set = allData[themeSelect.value]?.find(s => s.id === setId) || Object.values(allData).flat().find(s => s.id === setId);
                 if (set) {
                     const currentLang = languageSelect.value || 'en';
                     const t = translations[currentLang];
                     
-                    // Reset image data for the new set
                     currentImages = set.images || [];
                     currentImageIndex = 0;
+                    currentVideos = set.videos || [];
+                    currentVideoIndex = 0;
 
                     const thumbnailsHtml = currentImages.map((imageSrc, index) => 
                         `<img src="${imageSrc}" alt="Thumbnail ${index + 1}" class="thumbnail w-24 h-24 object-contain rounded-md cursor-pointer ${index === 0 ? 'active' : ''}" data-image-index="${index}">`
                     ).join('');
 
-                    // Assume set.videos is an array of objects: [{ link: '...' }]
-                    const videosHtml = (set.videos || []).filter(video => video && video.link).map(video => `
-                        <div class="mb-4">
-                            <div class="video-container">
-                                <iframe src="${video.link}" title="Video for ${set.name[currentLang]}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    // The new HTML for the video gallery
+                    const videoGalleryHtml = `
+                        <div class="flex flex-col lg:flex-row gap-6">
+                            <!-- Left Column: Video List -->
+                            <div class="lg:w-1/3 flex-shrink-0">
+                                <div class="bg-gray-100 rounded-xl p-4 h-[400px] overflow-y-auto custom-scrollbar">
+                                    <h4 class="text-md font-semibold mb-2 text-gray-800">Video List</h4>
+                                    <ul id="video-list" class="space-y-2">
+                                        <!-- Video list items will be populated here by JavaScript -->
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Right Column: Video Player -->
+                            <div class="lg:w-2/3 flex-grow">
+                                <div class="bg-gray-100 rounded-xl p-4 flex flex-col h-full">
+                                    <h4 id="now-playing-title" class="text-md font-semibold mb-2 text-gray-800 truncate">
+                                        ${t.now_playing}
+                                    </h4>
+                                    <div class="relative w-full" style="padding-bottom: 56.25%;">
+                                        <iframe
+                                            id="video-player"
+                                            class="absolute top-0 left-0 w-full h-full rounded-lg shadow-lg"
+                                            title="Video Player"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            allowfullscreen
+                                            frameborder="0"
+                                        ></iframe>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    `).join('');
+                    `;
 
                     setDetailContent.innerHTML = `
                         <h1 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-yellow-400 pb-2">${set.name[currentLang]} (${set.id})</h1>
@@ -487,7 +589,7 @@
                         
                         <div class="mt-8">
                             <h3 class="text-2xl font-bold text-gray-800 mb-4 border-b-2 border-yellow-400 pb-2">${t.my_review_videos}</h3>
-                            ${videosHtml}
+                            ${videoGalleryHtml}
                         </div>
                     `;
 
@@ -508,6 +610,15 @@
                             updateMainImage();
                         });
                     });
+
+                    // NEW: Initialize the video gallery
+                    if (currentVideos.length > 0) {
+                        updateVideoPlayer(currentVideoIndex);
+                        renderVideoGallery(currentVideos);
+                    } else {
+                        // Handle the case where there are no videos
+                        renderVideoGallery([]);
+                    }
                 }
             };
 
