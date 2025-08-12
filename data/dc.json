@@ -1,31 +1,31 @@
 {
   "DC": [
     {
-      "id": "76188",
-      "name": "Batman™ Classic TV Series Batmobile™",
-      "description": "This buildable Batmobile is a faithful recreation of the vehicle from the original 1966 TV series. It comes with Batman and The Joker minifigures.",
+      "id": "76252",
+      "name": "Batcave - Shadow Box",
+      "description": "The LEGO® DC Batcave™ – Shadow Box (76252) captures the dramatic style of the Batcave from the 1992 film Batman Returns. This 3,981-piece set features a moving Bat-Signal and a display box that opens to reveal the detailed interior.",
+      "year": 2023,
+      "pieces": 3981,
+      "minifigs": 7,
+      "videoLink": "https://www.youtube.com/embed/Pj5s0K55q24",
       "images": [
-        "https://placehold.co/800x600/e8e8e8/333333?text=Batmobile+Image+1",
-        "https://placehold.co/800x600/e8e8e8/333333?text=Batmobile+Image+2"
-      ],
-      "year": 2021,
-      "pieces": 345,
-      "minifigs": 2,
-      "videoLink": "https://www.youtube.com/embed/dQw4w9WgXcQ"
+        "https://placehold.co/600x400/94a3b8/ffffff?text=76252+Image+1",
+        "https://placehold.co/600x400/64748b/ffffff?text=76252+Image+2",
+        "https://placehold.co/600x400/475569/ffffff?text=76252+Image+3"
+      ]
     },
     {
-      "id": "76182",
-      "name": "Batman Cowl",
-      "description": "A detailed, buildable replica of the iconic Batman cowl from the DC universe. Perfect for display.",
+      "id": "76221",
+      "name": "Batmobile",
+      "description": "An iconic buildable Batmobile model from the classic DC Comics. The set features a detailed engine and a cockpit for the included Batman minifigure.",
+      "year": 2022,
+      "pieces": 405,
+      "minifigs": 1,
+      "videoLink": "https://www.youtube.com/embed/0_R2iQ-z-m4",
       "images": [
-        "https://placehold.co/800x600/e8e8e8/333333?text=Cowl+Image+1",
-        "https://placehold.co/800x600/e8e8e8/333333?text=Cowl+Image+2",
-        "https://placehold.co/800x600/e8e8e8/333333?text=Cowl+Image+3"
-      ],
-      "year": 2021,
-      "pieces": 410,
-      "minifigs": 0,
-      "videoLink": "https://www.youtube.com/embed/dQw4w9WgXcQ"
+        "https://placehold.co/600x400/94a3b8/ffffff?text=76221+Image+1",
+        "https://placehold.co/600x400/64748b/ffffff?text=76221+Image+2"
+      ]
     }
   ]
 }

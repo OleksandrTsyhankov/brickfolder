@@ -43,6 +43,10 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+        .thumbnail.active {
+            border: 2px solid #f97316; /* Highlight active thumbnail */
+            box-shadow: 0 0 5px rgba(249, 115, 22, 0.5);
+        }
     </style>
 </head>
 <body class="p-4 md:p-8 flex flex-col min-h-screen">
@@ -122,7 +126,7 @@
                     <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.35 8.71l-6.52 3.23c-.33.16-.71-.08-.71-.45V9.45c0-.37.38-.61.71-.45l6.52 3.23c.33.17.33.43 0 .6z"/>
                     </svg>
-                </a>            
+                </a>
             </div>
         </div>
 
@@ -142,8 +146,6 @@
             let currentSets = [];
 
             // This array holds the filenames for each theme's data.
-            // FOR THIS CODE TO WORK, you must create a folder named `data`
-            // and place the following JSON files inside it.
             const themeFiles = [
                 'dc.json',
                 'harry_potter.json'
@@ -151,6 +153,7 @@
 
             // This function fetches data from all theme-specific JSON files.
             const fetchAllData = async () => {
+                loader.classList.remove('hidden'); // Show loader
                 const fetchPromises = themeFiles.map(fileName => 
                     fetch(`./data/${fileName}`).then(response => {
                         if (!response.ok) {
@@ -171,6 +174,7 @@
                 results.forEach(data => {
                     Object.assign(mergedData, data);
                 });
+                loader.classList.add('hidden'); // Hide loader
                 return mergedData;
             };
 
@@ -202,14 +206,14 @@
             const renderSetsCatalog = (sets) => {
                 setsCatalog.innerHTML = '';
                 if (sets.length === 0) {
-                    setsCatalog.innerHTML = '<p class="text-center text-gray-500 col-span-full">No sets found for this theme.</p>';
+                    setsCatalog.innerHTML = '<p class="text-center text-gray-500 col-span-full">No sets found for this theme. Please check if the data files exist in the `/data` folder.</p>';
                 }
                 sets.forEach(set => {
                     const setCard = document.createElement('div');
                     setCard.className = 'card';
                     setCard.setAttribute('data-set-id', set.id);
                     setCard.innerHTML = `
-                        <img src="${set.image}" alt="LEGO Set ${set.id}" class="w-full h-auto rounded-md mb-2">
+                        <img src="${set.images[0]}" alt="LEGO Set ${set.id}" class="w-full h-auto rounded-md mb-2">
                         <h3 class="font-semibold text-lg text-gray-800">${set.name} (${set.id})</h3>
                         <p class="text-sm text-gray-600">${set.description.substring(0, 70)}...</p>
                     `;

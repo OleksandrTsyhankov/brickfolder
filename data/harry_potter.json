@@ -1,32 +1,18 @@
 {
-  "HarryPotter": [
+  "Harry Potter": [
     {
-      "id": "75978",
-      "name": "Diagon Alley",
-      "description": "A detailed LEGO Harry Potter set.",
+      "id": "76419",
+      "name": "Hogwarts Castle and Grounds",
+      "description": "Capture the magical atmosphere of the Harry Potter™ saga with the most detailed LEGO® brick model of Hogwarts Castle and Grounds.",
+      "year": 2023,
+      "pieces": 2660,
+      "minifigs": 0,
+      "videoLink": "https://www.youtube.com/embed/d3sR1XF1v14",
       "images": [
-        "https://placehold.co/800x600/e8e8e8/333333?text=Diagon+Alley+Image+1",
-        "https://placehold.co/800x600/e8e8e8/333333?text=Diagon+Alley+Image+2",
-        "https://placehold.co/800x600/e8e8e8/333333?text=Diagon+Alley+Image+3"
-      ],
-      "year": 2020,
-      "pieces": 5544,
-      "minifigs": 14,
-      "videoLink": "https://www.youtube.com/embed/dQw4w9WgXcQ"
-    },
-    {
-      "id": "71043",
-      "name": "Hogwarts Castle",
-      "description": "An immense microscale recreation of the Hogwarts Castle.",
-      "images": [
-        "https://placehold.co/800x600/e8e8e8/333333?text=Hogwarts+Castle+Image+1",
-        "https://placehold.co/800x600/e8e8e8/333333?text=Hogwarts+Castle+Image+2",
-        "https://placehold.co/800x600/e8e8e8/333333?text=Hogwarts+Castle+Image+3"
-      ],
-      "year": 2018,
-      "pieces": 6020,
-      "minifigs": 4,
-      "videoLink": "https://www.youtube.com/embed/dQw4w9WgXcQ"
+        "https://placehold.co/600x400/94a3b8/ffffff?text=76419+Image+1",
+        "https://placehold.co/600x400/64748b/ffffff?text=76419+Image+2",
+        "https://placehold.co/600x400/475569/ffffff?text=76419+Image+3"
+      ]
     }
   ]
 }
