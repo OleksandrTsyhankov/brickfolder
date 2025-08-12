@@ -209,11 +209,12 @@
                     connect_title: "Connect With Me",
                     no_sets_found: "No sets found for this theme or search term. Please check if the data files exist in the `/data` folder.",
                     about_this_set: "About This Set",
-                    my_review_video: "My Review Video",
+                    my_review_videos: "My Review Videos",
                     preview_text_snippet: "...",
-                    pieces: "Pieces:",
-                    minifigures: "Minifigures:",
-                    year_released: "Year Released:",
+                    pieces: "Pieces",
+                    minifigures: "Minifigures",
+                    year_released: "Year Released",
+                    set_type: "Set Type"
                 },
                 ua: {
                     store_title: "Відвідайте мій магазин на BrickLink!",
@@ -229,11 +230,12 @@
                     connect_title: "Зв'язатися зі мною",
                     no_sets_found: "Наборів для цієї теми або пошукового запиту не знайдено. Будь ласка, перевірте, чи існують файли даних у папці `/data`.",
                     about_this_set: "Про цей набір",
-                    my_review_video: "Мій відеоогляд",
+                    my_review_videos: "Мої відеоогляди",
                     preview_text_snippet: "...",
-                    pieces: "Деталі:",
-                    minifigures: "Мініфігурки:",
-                    year_released: "Рік випуску:",
+                    pieces: "Деталі",
+                    minifigures: "Мініфігурки",
+                    year_released: "Рік випуску",
+                    set_type: "Тип набору"
                 }
             };
             
@@ -371,6 +373,16 @@
                 `<img src="${imageSrc}" alt="Thumbnail ${index + 1}" class="thumbnail w-24 h-24 object-cover rounded-md cursor-pointer ${index === 0 ? 'active' : ''}" data-image-src="${imageSrc}">`
             ).join('');
 
+            // Assume set.videos is an array of objects: [{ title: '...', link: '...' }]
+            const videosHtml = (set.videos || []).map(video => `
+                <div class="mb-4">
+                    <h4 class="text-lg font-bold mb-2">${video.title[currentLang] || video.title.en}</h4>
+                    <div class="video-container">
+                        <iframe src="${video.link}" title="${video.title[currentLang] || video.title.en}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            `).join('');
+
             setDetailContent.innerHTML = `
                 <h1 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-yellow-400 pb-2">${set.name[currentLang]} (${set.id})</h1>
                 
@@ -380,25 +392,36 @@
                         ${thumbnailsHtml}
                     </div>
                 </div>
+
+                <!-- Set specifications in a single row -->
+                <div class="bg-gray-100 p-4 rounded-lg shadow-inner mb-6 flex flex-wrap justify-around items-center gap-4 text-center">
+                    <div class="flex-1 min-w-[150px]">
+                        <p class="text-sm font-semibold">${t.pieces}</p>
+                        <p class="text-xl font-bold">${set.pieces}</p>
+                    </div>
+                    <div class="flex-1 min-w-[150px]">
+                        <p class="text-sm font-semibold">${t.minifigures}</p>
+                        <p class="text-xl font-bold">${set.minifigs}</p>
+                    </div>
+                    <div class="flex-1 min-w-[150px]">
+                        <p class="text-sm font-semibold">${t.year_released}</p>
+                        <p class="text-xl font-bold">${set.yearReleased}</p>
+                    </div>
+                    <div class="flex-1 min-w-[150px]">
+                        <p class="text-sm font-semibold">${t.set_type}</p>
+                        <p class="text-xl font-bold">${set.setType}</p>
+                    </div>
+                </div>
                 
+                <!-- The "About This Set" section is now after the new specification row -->
                 <div class="bg-gray-100 p-4 rounded-lg shadow-inner mb-6">
                     <h3 class="text-lg font-bold text-gray-800 mb-2">${t.about_this_set}</h3>
                     <p class="text-gray-700">${set.description[currentLang]}</p>
                 </div>
-
-                <div class="bg-gray-100 p-4 rounded-lg shadow-inner mb-6">
-                    <ul class="list-disc list-inside text-gray-700">
-                        <li><strong>${t.pieces}</strong> ${set.pieces}</li>
-                        <li><strong>${t.minifigures}</strong> ${set.minifigs}</li>
-                        <li><strong>${t.year_released}</strong> ${set.year}</li>
-                    </ul>
-                </div>
                 
                 <div class="mt-8">
-                    <h3 class="text-2xl font-bold text-gray-800 mb-4 border-b-2 border-yellow-400 pb-2">${t.my_review_video}</h3>
-                    <div class="video-container">
-                        <iframe src="${set.videoLink}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4 border-b-2 border-yellow-400 pb-2">${t.my_review_videos}</h3>
+                    ${videosHtml}
                 </div>
             `;
 
