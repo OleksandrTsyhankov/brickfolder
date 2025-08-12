@@ -212,7 +212,7 @@
                     pieces: "Pieces",
                     minifigures: "Minifigures",
                     year_released: "Year Released",
-                    set_type: "Set Type"
+                    age: "Age"
                 },
                 ua: {
                     store_title: "Відвідайте мій магазин на BrickLink!",
@@ -233,7 +233,7 @@
                     pieces: "Деталі",
                     minifigures: "Мініфігурки",
                     year_released: "Рік випуску",
-                    set_type: "Тип набору"
+                    age: "Вік"
                 }
             };
             
@@ -270,7 +270,8 @@
             // This array holds the filenames for each theme's data.
             const themeFiles = [
                 'dc.json',
-                'harry_potter.json'
+                'harry_potter.json',
+                "one_piece.json"
             ];
 
             // This function fetches data from all theme-specific JSON files.
@@ -400,13 +401,13 @@
                                 <p class="text-sm font-semibold">${t.minifigures}</p>
                                 <p class="text-xl font-bold">${set.minifigs}</p>
                             </div>` : ''}
-                            ${set.yearReleased ? `<div class="flex-1 min-w-[150px]">
+                            ${set.year ? `<div class="flex-1 min-w-[150px]">
                                 <p class="text-sm font-semibold">${t.year_released}</p>
                                 <p class="text-xl font-bold">${set.yearReleased}</p>
                             </div>` : ''}
-                            ${set.setType ? `<div class="flex-1 min-w-[150px]">
-                                <p class="text-sm font-semibold">${t.set_type}</p>
-                                <p class="text-xl font-bold">${set.setType}</p>
+                            ${set.age ? `<div class="flex-1 min-w-[150px]">
+                                <p class="text-sm font-semibold">${t.age}</p>
+                                <p class="text-xl font-bold">${set.age}</p>
                             </div>` : ''}
                         </div>
                         
