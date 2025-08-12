@@ -55,36 +55,46 @@
         <!-- Main Application Column -->
         <div class="bg-white p-6 md:p-10 rounded-xl shadow-lg">
             
-            <!-- Logo Section with error handling -->
-            <div id="logo" class="flex items-center justify-center mb-6">
-                <img src="./images/logo.png" 
-                     onerror="this.onerror=null;this.src='https://placehold.co/200x80/637082/ffffff?text=Your+Logo'" 
-                     alt="Your Brand Logo" 
-                     class="h-20 w-auto">
+            <!-- Logo and Language Selector Section -->
+            <div class="flex flex-col sm:flex-row items-center justify-between mb-6">
+                <div id="logo" class="flex items-center justify-center sm:justify-start mb-4 sm:mb-0">
+                    <img src="./images/logo.png" 
+                         onerror="this.onerror=null;this.src='https://placehold.co/200x80/637082/ffffff?text=Your+Logo'" 
+                         alt="Your Brand Logo" 
+                         class="h-20 w-auto">
+                </div>
+                <!-- Language Selector -->
+                <div class="flex items-center space-x-2">
+                    <label for="lang-select" class="font-medium text-gray-700">Language:</label>
+                    <select id="lang-select" class="p-2 rounded-md border border-gray-300 shadow-sm focus:border-yellow-500 focus:ring focus:ring-yellow-500 focus:ring-opacity-50">
+                        <option value="en">English</option>
+                        <option value="ua">Українська</option>
+                    </select>
+                </div>
             </div>
             
             <!-- BrickLink Store Splash Section -->
             <div id="store_splash" class="bg-gray-100 p-6 md:p-8 rounded-xl shadow-inner mb-6 text-center">
-                <h2 class="text-2xl font-bold text-gray-800 mb-2">Visit My BrickLink Store!</h2>
-                <p class="text-gray-600 mb-4">
+                <h2 data-translate="store_title" class="text-2xl font-bold text-gray-800 mb-2">Visit My BrickLink Store!</h2>
+                <p data-translate="store_text" class="text-gray-600 mb-4">
                     Find new and used LEGO sets, parts, and minifigures in my store. I offer a wide selection and great prices.
                 </p>
-                <a href="https://store.bricklink.com/BrickFolder#/shop" target="_blank" class="inline-block px-6 py-3 bg-yellow-500 text-white font-semibold rounded-md shadow-md hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 transition-colors duration-200">
+                <a href="https://store.bricklink.com/BrickFolder#/shop" target="_blank" data-translate="store_button" class="inline-block px-6 py-3 bg-yellow-500 text-white font-semibold rounded-md shadow-md hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 transition-colors duration-200">
                     Go to the Store
                 </a>
             </div>
 
             <!-- Sets Catalog Section -->
             <div id="catalog_view" class="block">
-                <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">My LEGO Sets Catalog</h2>
-                <p class="text-sm text-center text-gray-600 mb-6">
+                <h2 data-translate="catalog_title" class="text-2xl font-bold text-center text-gray-800 mb-6">My LEGO Sets Catalog</h2>
+                <p data-translate="catalog_subtitle" class="text-sm text-center text-gray-600 mb-6">
                     A showcase of my favorite LEGO sets.
                 </p>
                 
                 <!-- Theme Selector and Search Bar -->
                 <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-6">
                     <div class="flex items-center w-full sm:w-auto">
-                        <label for="theme-select" class="mr-2 font-medium shrink-0">Select a Theme:</label>
+                        <label for="theme-select" data-translate="theme_label" class="mr-2 font-medium shrink-0">Select a Theme:</label>
                         <select id="theme-select" class="p-2 rounded-md border border-gray-300 shadow-sm w-full focus:border-yellow-500 focus:ring focus:ring-yellow-500 focus:ring-opacity-50">
                             <option value="">Loading themes...</option>
                         </select>
@@ -106,7 +116,7 @@
 
             <!-- Individual Set Detail Section (initially hidden) -->
             <div id="set_detail_view" class="hidden">
-                <button id="back_to_catalog" class="mb-4 text-blue-600 hover:text-blue-800 font-medium">
+                <button id="back_to_catalog" data-translate="back_button" class="mb-4 text-blue-600 hover:text-blue-800 font-medium">
                     &larr; Back to Catalog
                 </button>
                 <div id="set_detail_content" class="space-y-4">
@@ -117,7 +127,7 @@
 
         <!-- Social Media Contacts Section -->
         <div class="bg-white p-6 md:p-10 rounded-xl shadow-lg mt-8 text-center">
-            <h2 class="text-2xl font-bold text-gray-800 mb-4">Connect With Me</h2>
+            <h2 data-translate="connect_title" class="text-2xl font-bold text-gray-800 mb-4">Connect With Me</h2>
             <div class="flex justify-center space-x-6">
                 <a href="https://www.instagram.com/your-username" target="_blank" class="text-gray-400 hover:text-yellow-500 transition-colors duration-200" title="Instagram">
                     <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.851.07 1.171.055 1.835.249 2.227.406.408.163.78.4.992.613.21.21.45.584.613.992.157.392.351 1.056.406 2.227.058 1.267.07 1.647.07 4.851s-.012 3.584-.07 4.851c-.055 1.171-.249 1.835-.406 2.227-.163.408-.4.78-.613.992-.21.21-.584.45-.992.613-.392.157-1.056.351-2.227.406-1.267.058-1.647.07-4.851.07s-3.584-.012-4.851-.07c-1.171-.055-1.835-.249-2.227-.406-.408-.163-.78-.4-.992-.613-.21-.21-.45-.584-.613-.992-.157-.392-.351-1.056-.406-2.227-.058-1.267-.07-1.647-.07-4.851s.012-3.584.07-4.851c.055-1.171.249-1.835.406-2.227.163-.408.4-.78.613-.992.21-.21.584-.45.992-.613.392-.157 1.056-.351 2.227-.406 1.267-.058 1.647-.07 4.851-.07zm0-2.163c-3.267 0-3.691.013-4.994.072-1.303.06-2.126.26-2.827.545-.71.291-1.294.757-1.764 1.228-.47.47-.937 1.054-1.228 1.764-.285.701-.485 1.524-.545 2.827-.059 1.303-.072 1.727-.072 4.994s.013 3.691.072 4.994c.06 1.303.26 2.126.545 2.827.291.71.757 1.294 1.228 1.764.47.47 1.054.937 1.764 1.228.701.285 1.524.485 2.827.545 1.303.059 1.727.072 4.994.072s3.691-.013 4.994-.072c1.303-.06 2.126-.26 2.827-.545.71-.291 1.294-.757 1.764-1.228.47-.47.937-1.054 1.228-1.764.285-.701.485-1.524.545-2.827.059-1.303.072-1.727.072-4.994s-.013-3.691-.072-4.994c-.06-1.303-.26-2.126-.545-2.827-.291-.71-.757-1.294-1.228-1.764-.47-.47-1.054-.937-1.764-1.228-.701-.285-1.524-.485-2.827-.545-1.303-.059-1.727-.072-4.994-.072zM12 6.865a5.135 5.135 0 100 10.27 5.135 5.135 0 000-10.27zm0 8.411a3.276 3.276 0 110-6.552 3.276 3.276 0 010 6.552zM16.994 6.883a1.215 1.215 0 100 2.43 1.215 1.215 0 000-2.43z"/></svg>
@@ -146,11 +156,75 @@
             const setDetailContent = document.getElementById('set_detail_content');
             const backButton = document.getElementById('back_to_catalog');
             const themeSelect = document.getElementById('theme-select');
+            const langSelect = document.getElementById('lang-select');
             const searchInput = document.getElementById('search_input');
             const loader = document.getElementById('loader');
 
             let allData = {}; // Store the full data object here
             let currentSets = [];
+
+            // This object holds the translations for all static text elements
+            const translations = {
+                en: {
+                    store_title: "Visit My BrickLink Store!",
+                    store_text: "Find new and used LEGO sets, parts, and minifigures in my store. I offer a wide selection and great prices.",
+                    store_button: "Go to the Store",
+                    catalog_title: "My LEGO Sets Catalog",
+                    catalog_subtitle: "A showcase of my favorite LEGO sets.",
+                    theme_label: "Select a Theme:",
+                    search_placeholder: "Search sets...",
+                    all_themes: "All Themes",
+                    loading_themes: "Loading themes...",
+                    back_button: "← Back to Catalog",
+                    connect_title: "Connect With Me",
+                    no_sets_found: "No sets found for this theme or search term. Please check if the data files exist in the `/data` folder.",
+                    set_specifications: "Set Specifications",
+                    year_released: "Year Released:",
+                    piece_count: "Piece Count:",
+                    minifigures: "Minifigures:",
+                    about_this_set: "About This Set",
+                    my_review_video: "My Review Video",
+                    preview_text_snippet: "..."
+                },
+                ua: {
+                    store_title: "Відвідайте мій магазин на BrickLink!",
+                    store_text: "Знайдіть нові та вживані набори LEGO, деталі та мініфігурки в моєму магазині. Я пропоную широкий вибір і чудові ціни.",
+                    store_button: "Перейти до магазину",
+                    catalog_title: "Мій каталог наборів LEGO",
+                    catalog_subtitle: "Демонстрація моїх улюблених наборів LEGO.",
+                    theme_label: "Виберіть тему:",
+                    search_placeholder: "Пошук наборів...",
+                    all_themes: "Усі теми",
+                    loading_themes: "Завантаження тем...",
+                    back_button: "← Назад до каталогу",
+                    connect_title: "Зв'язатися зі мною",
+                    no_sets_found: "Наборів для цієї теми або пошукового запиту не знайдено. Будь ласка, перевірте, чи існують файли даних у папці `/data`.",
+                    set_specifications: "Характеристики набору",
+                    year_released: "Рік випуску:",
+                    piece_count: "Кількість деталей:",
+                    minifigures: "Мініфігурки:",
+                    about_this_set: "Про цей набір",
+                    my_review_video: "Мій відеоогляд",
+                    preview_text_snippet: "..."
+                }
+            };
+            
+            // Function to apply translations based on the selected language
+            const setLanguage = (lang) => {
+                const translation = translations[lang];
+                document.querySelectorAll('[data-translate]').forEach(element => {
+                    const key = element.getAttribute('data-translate');
+                    if (translation[key]) {
+                        element.textContent = translation[key];
+                    }
+                });
+                // Update specific elements that need special handling
+                searchInput.placeholder = translation.search_placeholder;
+                document.querySelector('#sets_catalog').setAttribute('data-no-sets-message', translation.no_sets_found);
+                
+                // Re-render the sets to update the "No sets found" message if needed
+                loadSets(themeSelect.value, searchInput.value);
+            };
 
             // This array holds the filenames for each theme's data.
             const themeFiles = [
@@ -187,7 +261,11 @@
 
             const loadThemes = () => {
                 const themes = Object.keys(allData);
-                themeSelect.innerHTML = '<option value="">All Themes</option>';
+                const currentLang = langSelect.value;
+                const allThemesText = translations[currentLang].all_themes;
+                const loadingThemesText = translations[currentLang].loading_themes;
+
+                themeSelect.innerHTML = `<option value="">${allThemesText}</option>`;
                 themes.forEach(theme => {
                     const option = document.createElement('option');
                     option.value = theme;
@@ -207,11 +285,12 @@
                     }
                 }
                 
-                // Filter the sets based on the search term
+                const currentLang = langSelect.value;
+                // Filter the sets based on the search term, checking both languages for name and description
                 const lowerCaseSearchTerm = searchTerm.toLowerCase();
                 const filteredSets = setsToDisplay.filter(set =>
-                    set.name.toLowerCase().includes(lowerCaseSearchTerm) ||
-                    set.description.toLowerCase().includes(lowerCaseSearchTerm) ||
+                    set.name[currentLang].toLowerCase().includes(lowerCaseSearchTerm) ||
+                    set.description[currentLang].toLowerCase().includes(lowerCaseSearchTerm) ||
                     set.id.toLowerCase().includes(lowerCaseSearchTerm)
                 );
 
@@ -220,9 +299,11 @@
             };
 
             const renderSetsCatalog = (sets) => {
+                const currentLang = langSelect.value;
                 setsCatalog.innerHTML = '';
                 if (sets.length === 0) {
-                    setsCatalog.innerHTML = '<p class="text-center text-gray-500 col-span-full">No sets found for this theme or search term. Please check if the data files exist in the `/data` folder.</p>';
+                    const noSetsMessage = document.querySelector('#sets_catalog').getAttribute('data-no-sets-message');
+                    setsCatalog.innerHTML = `<p class="text-center text-gray-500 col-span-full">${noSetsMessage}</p>`;
                 }
                 sets.forEach(set => {
                     const setCard = document.createElement('div');
@@ -230,8 +311,8 @@
                     setCard.setAttribute('data-set-id', set.id);
                     setCard.innerHTML = `
                         <img src="${set.images[0]}" alt="LEGO Set ${set.id}" class="w-full h-auto rounded-md mb-2">
-                        <h3 class="font-semibold text-lg text-gray-800">${set.name} (${set.id})</h3>
-                        <p class="text-sm text-gray-600">${set.description.substring(0, 70)}...</p>
+                        <h3 class="font-semibold text-lg text-gray-800">${set.name[currentLang]} (${set.id})</h3>
+                        <p class="text-sm text-gray-600">${set.description[currentLang].substring(0, 70)}${translations[currentLang].preview_text_snippet}</p>
                     `;
                     setCard.addEventListener('click', () => showSetDetail(set.id));
                     setsCatalog.appendChild(setCard);
@@ -241,6 +322,9 @@
             const showSetDetail = (setId) => {
                 const set = allData[themeSelect.value]?.find(s => s.id === setId) || Object.values(allData).flat().find(s => s.id === setId);
                 if (set) {
+                    const currentLang = langSelect.value;
+                    const t = translations[currentLang];
+                    
                     // Create the main image and thumbnail gallery HTML
                     const mainImageHtml = `<img id="main-set-image" src="${set.images[0]}" alt="LEGO Set ${set.id}" class="w-full h-auto rounded-lg shadow-lg mb-4">`;
                     const thumbnailsHtml = set.images.map((imageSrc, index) => 
@@ -249,7 +333,7 @@
 
                     // Dynamically build the new, formatted HTML for the set detail page
                     setDetailContent.innerHTML = `
-                        <h1 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-yellow-400 pb-2">${set.name} (${set.id})</h1>
+                        <h1 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-yellow-400 pb-2">${set.name[currentLang]} (${set.id})</h1>
                         
                         <!-- Image Gallery -->
                         <div class="my-4">
@@ -261,22 +345,23 @@
                         
                         <!-- Set Details Section (now in a single row) -->
                         <div class="bg-gray-100 p-4 rounded-lg shadow-inner mb-6">
+                            // <h3 class="text-lg font-bold text-gray-800 mb-2">${t.set_specifications}</h3>
                             <div class="flex flex-wrap gap-4 justify-between text-gray-700">
-                                <div><span class="font-semibold text-gray-800">Year Released:</span> ${set.year}</div>
-                                <div><span class="font-semibold text-gray-800">Piece Count:</span> ${set.pieces}</div>
-                                <div><span class="font-semibold text-gray-800">Minifigures:</span> ${set.minifigs}</div>
+                                <div><span class="font-semibold text-gray-800">${t.year_released}</span> ${set.year}</div>
+                                <div><span class="font-semibold text-gray-800">${t.piece_count}</span> ${set.pieces}</div>
+                                <div><span class="font-semibold text-gray-800">${t.minifigures}</span> ${set.minifigs}</div>
                             </div>
                         </div>
 
                         <!-- Description Section -->
                         <div class="bg-gray-100 p-4 rounded-lg shadow-inner mb-6">
-                            <h3 class="text-lg font-bold text-gray-800 mb-2">About This Set</h3>
-                            <p class="text-gray-700">${set.description}</p>
+                            <h3 class="text-lg font-bold text-gray-800 mb-2">${t.about_this_set}</h3>
+                            <p class="text-gray-700">${set.description[currentLang]}</p>
                         </div>
                         
                         <!-- Video Section -->
                         <div class="mt-8">
-                            <h3 class="text-2xl font-bold text-gray-800 mb-4 border-b-2 border-yellow-400 pb-2">My Review Video</h3>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-4 border-b-2 border-yellow-400 pb-2">${t.my_review_video}</h3>
                             <div class="video-container">
                                 <iframe src="${set.videoLink}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                             </div>
@@ -319,10 +404,16 @@
                 loadSets(themeSelect.value, searchTerm);
             });
 
+            // Add event listener for the language selector
+            langSelect.addEventListener('change', (event) => {
+                setLanguage(event.target.value);
+            });
+
             // Initial load of data
             allData = await fetchAllData();
             loadThemes();
             loadSets(""); // Load all sets initially
+            setLanguage('en'); // Set initial language to English
         });
     </script>
 </body>

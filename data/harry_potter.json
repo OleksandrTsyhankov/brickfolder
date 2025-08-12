@@ -2,8 +2,14 @@
   "Harry Potter": [
     {
       "id": "76419",
-      "name": "Hogwarts Castle and Grounds",
-      "description": "Capture the magical atmosphere of the Harry Potter™ saga with the most detailed LEGO® brick model of Hogwarts Castle and Grounds.",
+      "name": {
+        "en": "Hogwarts Castle and Grounds",
+        "ua": "Замок і територія Гоґвортсу"
+      },
+      "description": {
+        "en": "Capture the magical atmosphere of the Harry Potter™ saga with the most detailed LEGO® brick model of Hogwarts Castle and Grounds.",
+        "ua": "Відтворіть чарівну атмосферу саги про Гаррі Поттера™ з найдеталізованішою моделлю замку та території Гоґвортсу з кубиків LEGO®."
+      },
       "year": 2023,
       "pieces": 2660,
       "minifigs": 0,

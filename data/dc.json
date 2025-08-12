@@ -2,8 +2,14 @@
   "DC": [
     {
       "id": "76252",
-      "name": "Batcave - Shadow Box",
-      "description": "The LEGO® DC Batcave™ – Shadow Box (76252) captures the dramatic style of the Batcave from the 1992 film Batman Returns. This 3,981-piece set features a moving Bat-Signal and a display box that opens to reveal the detailed interior.",
+      "name": {
+        "en": "Batcave - Shadow Box",
+        "ua": "Бет-печера - тіньовий бокс"
+      },
+      "description": {
+        "en": "The LEGO® DC Batcave™ – Shadow Box (76252) captures the dramatic style of the Batcave from the 1992 film Batman Returns. This 3,981-piece set features a moving Bat-Signal and a display box that opens to reveal the detailed interior.",
+        "ua": "LEGO® DC Бет-печера – Тіньовий бокс (76252) передає драматичний стиль Бет-печери з фільму 1992 року \"Бетмен повертається\". Цей набір з 3,981 деталі має рухомий Бет-сигнал і коробку, що відкривається, щоб показати деталізований інтер'єр."
+      },
       "year": 2023,
       "pieces": 3981,
       "minifigs": 7,
@@ -16,8 +22,14 @@
     },
     {
       "id": "76221",
-      "name": "Batmobile",
-      "description": "An iconic buildable Batmobile model from the classic DC Comics. The set features a detailed engine and a cockpit for the included Batman minifigure.",
+      "name": {
+        "en": "Batmobile",
+        "ua": "Бетмобіль"
+      },
+      "description": {
+        "en": "An iconic buildable Batmobile model from the classic DC Comics. The set features a detailed engine and a cockpit for the included Batman minifigure.",
+        "ua": "Культова збірна модель Бетмобіля з класичних коміксів DC. Набір має деталізований двигун і кабіну для мініфігурки Бетмена, що входить до комплекту."
+      },
       "year": 2022,
       "pieces": 405,
       "minifigs": 1,
