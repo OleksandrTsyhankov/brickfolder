@@ -81,12 +81,18 @@
                     A showcase of my favorite LEGO sets.
                 </p>
                 
-                <!-- Theme Selector Dropdown -->
-                <div class="flex justify-center items-center mb-6">
-                    <label for="theme-select" class="mr-2 font-medium">Select a Theme:</label>
-                    <select id="theme-select" class="p-2 rounded-md border border-gray-300 shadow-sm focus:border-yellow-500 focus:ring focus:ring-yellow-500 focus:ring-opacity-50">
-                        <option value="">Loading themes...</option>
-                    </select>
+                <!-- Theme Selector and Search Bar -->
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-6">
+                    <div class="flex items-center w-full sm:w-auto">
+                        <label for="theme-select" class="mr-2 font-medium shrink-0">Select a Theme:</label>
+                        <select id="theme-select" class="p-2 rounded-md border border-gray-300 shadow-sm w-full focus:border-yellow-500 focus:ring focus:ring-yellow-500 focus:ring-opacity-50">
+                            <option value="">Loading themes...</option>
+                        </select>
+                    </div>
+                    <div class="flex items-center w-full sm:w-auto">
+                        <label for="search_input" class="sr-only">Search</label>
+                        <input type="text" id="search_input" placeholder="Search sets..." class="p-2 rounded-md border border-gray-300 shadow-sm w-full focus:border-yellow-500 focus:ring focus:ring-yellow-500 focus:ring-opacity-50">
+                    </div>
                 </div>
 
                 <div id="sets_catalog" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
@@ -140,6 +146,7 @@
             const setDetailContent = document.getElementById('set_detail_content');
             const backButton = document.getElementById('back_to_catalog');
             const themeSelect = document.getElementById('theme-select');
+            const searchInput = document.getElementById('search_input');
             const loader = document.getElementById('loader');
 
             let allData = {}; // Store the full data object here
@@ -189,7 +196,7 @@
                 });
             };
 
-            const loadSets = (themeId) => {
+            const loadSets = (themeId, searchTerm = '') => {
                 let setsToDisplay = [];
                 if (themeId) {
                     setsToDisplay = allData[themeId] || [];
@@ -199,14 +206,23 @@
                         setsToDisplay = setsToDisplay.concat(allData[theme]);
                     }
                 }
-                currentSets = setsToDisplay; // Store the fetched sets globally
+                
+                // Filter the sets based on the search term
+                const lowerCaseSearchTerm = searchTerm.toLowerCase();
+                const filteredSets = setsToDisplay.filter(set =>
+                    set.name.toLowerCase().includes(lowerCaseSearchTerm) ||
+                    set.description.toLowerCase().includes(lowerCaseSearchTerm) ||
+                    set.id.toLowerCase().includes(lowerCaseSearchTerm)
+                );
+
+                currentSets = filteredSets; // Store the filtered sets globally
                 renderSetsCatalog(currentSets);
             };
 
             const renderSetsCatalog = (sets) => {
                 setsCatalog.innerHTML = '';
                 if (sets.length === 0) {
-                    setsCatalog.innerHTML = '<p class="text-center text-gray-500 col-span-full">No sets found for this theme. Please check if the data files exist in the `/data` folder.</p>';
+                    setsCatalog.innerHTML = '<p class="text-center text-gray-500 col-span-full">No sets found for this theme or search term. Please check if the data files exist in the `/data` folder.</p>';
                 }
                 sets.forEach(set => {
                     const setCard = document.createElement('div');
@@ -223,7 +239,7 @@
             };
 
             const showSetDetail = (setId) => {
-                const set = currentSets.find(s => s.id === setId);
+                const set = allData[themeSelect.value]?.find(s => s.id === setId) || Object.values(allData).flat().find(s => s.id === setId);
                 if (set) {
                     // Create the main image and thumbnail gallery HTML
                     const mainImageHtml = `<img id="main-set-image" src="${set.images[0]}" alt="LEGO Set ${set.id}" class="w-full h-auto rounded-lg shadow-lg mb-4">`;
@@ -295,7 +311,12 @@
             
             themeSelect.addEventListener('change', (event) => {
                 const selectedTheme = event.target.value;
-                loadSets(selectedTheme);
+                loadSets(selectedTheme, searchInput.value);
+            });
+
+            searchInput.addEventListener('input', (event) => {
+                const searchTerm = event.target.value;
+                loadSets(themeSelect.value, searchTerm);
             });
 
             // Initial load of data
