@@ -143,7 +143,8 @@
             </div>
             
             <!-- BrickLink Store Splash Section -->
-            <div id="store_splash" class="bg-gray-100 p-6 md:p-8 rounded-xl shadow-inner mb-6 text-center">
+            <!-- ADDED 'max-w-4xl mx-auto' to make this section narrower and centered -->
+            <div id="store_splash" class="bg-gray-100 p-6 md:p-8 rounded-xl shadow-inner mb-6 text-center max-w-4xl mx-auto">
                 <h2 data-translate="store_title" class="text-2xl font-bold text-gray-800 mb-2">Visit My BrickLink Store!</h2>
                 <p data-translate="store_text" class="text-gray-600 mb-4">
                     Find new and used LEGO sets, parts, and minifigures in my store. I offer a wide selection and great prices.
@@ -188,7 +189,8 @@
                 <button id="back_to_catalog" data-translate="back_button" class="mb-4 text-blue-600 hover:text-blue-800 font-medium">
                     &larr; Back to Catalog
                 </button>
-                <div id="set_detail_content" class="space-y-4">
+                <!-- ADDED 'max-w-5xl mx-auto' to make this section narrower and centered -->
+                <div id="set_detail_content" class="space-y-4 max-w-5xl mx-auto">
                     <!-- Set details will be dynamically populated here -->
                 </div>
             </div>
@@ -216,7 +218,7 @@
 
     <script>
         // Global function to show the main catalog view.
-        // This is now in the global scope so the onclick attribute in HTML can find it.
+        // This is in the global scope so the onclick attribute in HTML can find it.
         function showCatalog() {
             const catalogView = document.getElementById('catalog_view');
             const setDetailView = document.getElementById('set_detail_view');
@@ -429,6 +431,7 @@
                 renderSetsCatalog(currentSets);
             };
 
+            // This function updates the main image and highlights the active thumbnail.
             const updateMainImage = () => {
                 const mainImage = document.getElementById('main-set-image');
                 const thumbnails = document.querySelectorAll('.thumbnail');
@@ -443,6 +446,7 @@
                 }
             };
             
+            // This function renders the detailed view of a specific set.
             const renderSetDetail = (setId) => {
                 const set = allData[themeSelect.value]?.find(s => s.id === setId) || Object.values(allData).flat().find(s => s.id === setId);
                 if (set) {
