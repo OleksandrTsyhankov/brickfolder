@@ -220,6 +220,9 @@
         // Global function to show the main catalog view.
         // This is in the global scope so the onclick attribute in HTML can find it.
         function showCatalog() {
+            // Update the URL to the base path
+            history.pushState(null, '', window.location.pathname);
+            
             const catalogView = document.getElementById('catalog_view');
             const setDetailView = document.getElementById('set_detail_view');
             const themeSelect = document.getElementById('theme-select');
@@ -237,6 +240,12 @@
 
             // Reload the sets to show all sets.
             loadSets("", "");
+        }
+        
+        // Function to update the URL with a set ID without reloading the page.
+        function updateUrlAndHistory(setId) {
+            const newUrl = setId ? `${window.location.pathname}?set=${setId}` : window.location.pathname;
+            history.pushState({ setId: setId }, '', newUrl);
         }
 
         document.addEventListener('DOMContentLoaded', async () => {
@@ -545,7 +554,24 @@
                 renderSetDetail(setId);
                 catalogView.classList.add('hidden');
                 setDetailView.classList.remove('hidden');
+                // Use the new function to add an entry to the browser's history
+                updateUrlAndHistory(setId);
             };
+
+            // Event listener for the browser's back and forward buttons
+            window.addEventListener('popstate', (event) => {
+                const urlParams = new URLSearchParams(window.location.search);
+                const setId = urlParams.get('set');
+                if (setId) {
+                    // Show the detail view for the set from the URL
+                    showSetDetail(setId);
+                    // This prevents the URL from getting messy
+                    history.replaceState({ setId: setId }, '', window.location.pathname + window.location.search);
+                } else {
+                    // Show the catalog view if no set ID is in the URL
+                    showCatalog();
+                }
+            });
 
             backButton.addEventListener('click', showCatalog);
             
@@ -568,8 +594,16 @@
 
             allData = await fetchAllData();
             loadThemes();
-            loadSets("");
-            setLanguage('en');
+            
+            // Check for a set ID in the URL on initial page load
+            const urlParams = new URLSearchParams(window.location.search);
+            const initialSetId = urlParams.get('set');
+            if (initialSetId) {
+                showSetDetail(initialSetId);
+            } else {
+                loadSets("");
+                setLanguage('en');
+            }
         });
     </script>
 </body>
