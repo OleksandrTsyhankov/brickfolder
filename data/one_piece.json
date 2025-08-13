@@ -33,6 +33,29 @@
         "https://i.pinimg.com/736x/cb/3d/44/cb3d442e06ce81f69ce8cfc35976af55.jpg",
         "https://i.pinimg.com/736x/92/a8/5e/92a85ea99094c422a452ac53215ab448.jpg"
       ]
+    },
+    {
+      "id": "75637",
+      "name": {
+        "en": "Buggy the Clown's Circus Tent",
+        "ua": "Buggy the Clown's Circus Tent"
+      },
+      "description": {
+        "en": "Buggy the Clown's Circus Tent",
+        "ua": "Buggy the Clown's Circus Tent"
+      },
+      "year": 2025,
+      "pieces": 573,
+      "minifigs": 4,
+      "age": "8+",
+      "videos": [
+        {
+          "title": "75637 LEGO® ONE PIECE Buggy the Clown's Circus Tent: Building instructions",
+          "link": "https://www.youtube.com/embed/HOcBJo-3IVo?si=JGicjdnRjfGl2m_V"
+        }
+      ],
+      "images": [
+      ]
     }
   ]
 }
