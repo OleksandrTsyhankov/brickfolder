@@ -161,12 +161,18 @@
                     A showcase of my favorite LEGO sets.
                 </p>
                 
-                <!-- Theme Selector and Search Bar -->
+                <!-- Theme Selector, Year Selector and Search Bar -->
                 <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-6">
                     <div class="flex items-center w-full sm:w-auto">
                         <label for="theme-select" data-translate="theme_label" class="mr-2 font-medium shrink-0">Select a Theme:</label>
                         <select id="theme-select" class="p-2 rounded-md border border-gray-300 shadow-sm w-full focus:border-yellow-500 focus:ring focus:ring-yellow-500 focus:ring-opacity-50">
                             <option value="">Loading themes...</option>
+                        </select>
+                    </div>
+                    <div class="flex items-center w-full sm:w-auto">
+                        <label for="year-select" data-translate="year_label" class="mr-2 font-medium shrink-0">Select a Year:</label>
+                        <select id="year-select" class="p-2 rounded-md border border-gray-300 shadow-sm w-full focus:border-yellow-500 focus:ring focus:ring-yellow-500 focus:ring-opacity-50">
+                            <option value="">Loading years...</option>
                         </select>
                     </div>
                     <div class="flex items-center w-full sm:w-auto">
@@ -226,6 +232,7 @@
             const catalogView = document.getElementById('catalog_view');
             const setDetailView = document.getElementById('set_detail_view');
             const themeSelect = document.getElementById('theme-select');
+            const yearSelect = document.getElementById('year-select'); // Get the new year select element
             
             // Set the current set ID to null since we're back on the catalog page.
             currentSetId = null; 
@@ -234,12 +241,13 @@
             setDetailView.classList.add('hidden');
             catalogView.classList.remove('hidden');
 
-            // Reset the theme and search fields to clear any previous filters.
+            // Reset all filter fields to clear any previous filters.
             themeSelect.value = "";
+            yearSelect.value = ""; // Reset the year select
             searchInput.value = "";
 
             // Reload the sets to show all sets.
-            loadSets("", "");
+            loadSets("", "", ""); // Pass all empty values
         }
         
         // Function to update the URL with a set ID without reloading the page.
@@ -255,6 +263,7 @@
             const setDetailContent = document.getElementById('set_detail_content');
             const backButton = document.getElementById('back_to_catalog');
             const themeSelect = document.getElementById('theme-select');
+            const yearSelect = document.getElementById('year-select'); // Get the new year select element
             const searchInput = document.getElementById('search_input');
             const loader = document.getElementById('loader');
             const languageSelect = document.getElementById('language-select');
@@ -278,9 +287,12 @@
                     catalog_title: "My LEGO Sets Catalog",
                     catalog_subtitle: "A showcase of my favorite LEGO sets.",
                     theme_label: "Select a Theme:",
+                    year_label: "Select a Year:", // New translation
                     search_placeholder: "Search sets...",
                     all_themes: "All Themes",
+                    all_years: "All Years", // New translation
                     loading_themes: "Loading themes...",
+                    loading_years: "Loading years...", // New translation
                     back_button: "← Back to Catalog",
                     connect_title: "Connect With Me",
                     no_sets_found: "No sets found for this theme or search term.",
@@ -300,9 +312,12 @@
                     catalog_title: "Мій каталог наборів LEGO",
                     catalog_subtitle: "Демонстрація моїх улюблених наборів LEGO.",
                     theme_label: "Виберіть тему:",
+                    year_label: "Виберіть рік:", // New translation
                     search_placeholder: "Пошук наборів...",
                     all_themes: "Усі теми",
+                    all_years: "Усі роки", // New translation
                     loading_themes: "Завантаження тем...",
+                    loading_years: "Завантаження років...", // New translation
                     back_button: "← Назад до каталогу",
                     connect_title: "Зв'язатися зі мною",
                     no_sets_found: "Наборів для цієї теми або пошукового запиту не знайдено.",
@@ -339,7 +354,7 @@
                 flagIcon.src = flagMap[lang];
 
                 // Re-render the sets catalog cards to show the correct language
-                loadSets(themeSelect.value, searchInput.value);
+                loadSets(themeSelect.value, yearSelect.value, searchInput.value);
 
                 // If a set detail page is currently open, re-render it with the new language
                 if (!setDetailView.classList.contains('hidden') && currentSetId) {
@@ -348,8 +363,9 @@
             };
 
             // This array holds the filenames for each theme's data.
+            // In a real-world app, this would likely be fetched from an API.
             const themeFiles = [
-                "one_piece_1.json" //, ""
+                "one_piece.json"
             ];
 
             // This function fetches data from all theme-specific JSON files.
@@ -393,6 +409,30 @@
                 });
             };
 
+            // New function to load unique years into the year dropdown
+            const loadYears = () => {
+                const years = new Set();
+                // Iterate through all data to find unique years
+                for (const theme in allData) {
+                    allData[theme].forEach(set => {
+                        if (set.year) {
+                            years.add(set.year);
+                        }
+                    });
+                }
+                const sortedYears = Array.from(years).sort((a, b) => b - a);
+                const currentLang = languageSelect.value || 'en';
+                const allYearsText = translations[currentLang].all_years;
+                
+                yearSelect.innerHTML = `<option value="">${allYearsText}</option>`;
+                sortedYears.forEach(year => {
+                    const option = document.createElement('option');
+                    option.value = year.toString();
+                    option.textContent = year;
+                    yearSelect.appendChild(option);
+                });
+            };
+
             const renderSetsCatalog = (sets) => {
                 setsCatalog.innerHTML = '';
                 const currentLang = languageSelect.value || 'en';
@@ -416,8 +456,10 @@
                 });
             };
             
-            const loadSets = (themeId, searchTerm = '') => {
+            // Updated loadSets function to accept year and search terms
+            const loadSets = (themeId, year, searchTerm = '') => {
                 let setsToDisplay = [];
+                // Step 1: Filter by theme
                 if (themeId) {
                     setsToDisplay = allData[themeId] || [];
                 } else {
@@ -425,7 +467,13 @@
                         setsToDisplay = setsToDisplay.concat(allData[theme]);
                     }
                 }
-                
+
+                // Step 2: Filter by year (if a year is selected)
+                if (year) {
+                    setsToDisplay = setsToDisplay.filter(set => set.year && set.year.toString() === year);
+                }
+
+                // Step 3: Filter by search term
                 const currentLang = languageSelect.value || 'en';
                 const lowerCaseSearchTerm = searchTerm.toLowerCase();
                 const filteredSets = setsToDisplay.filter(set =>
@@ -564,7 +612,7 @@
                 const setId = urlParams.get('set');
                 if (setId) {
                     // Show the detail view for the set from the URL
-                    showSetDetail(setId);
+                    showSetDetail(initialSetId);
                     // This prevents the URL from getting messy
                     history.replaceState({ setId: setId }, '', window.location.pathname + window.location.search);
                 } else {
@@ -577,12 +625,18 @@
             
             themeSelect.addEventListener('change', (event) => {
                 const selectedTheme = event.target.value;
-                loadSets(selectedTheme, searchInput.value);
+                loadSets(selectedTheme, yearSelect.value, searchInput.value);
+            });
+
+            // New event listener for the year dropdown
+            yearSelect.addEventListener('change', (event) => {
+                const selectedYear = event.target.value;
+                loadSets(themeSelect.value, selectedYear, searchInput.value);
             });
 
             searchInput.addEventListener('input', (event) => {
                 const searchTerm = event.target.value;
-                loadSets(themeSelect.value, searchTerm);
+                loadSets(themeSelect.value, yearSelect.value, searchTerm);
             });
 
             // New event listener for the language dropdown
@@ -590,10 +644,12 @@
                 const selectedLang = event.target.value;
                 setLanguage(selectedLang);
                 loadThemes(); // Reload themes to show in new language
+                loadYears(); // Reload years to show in new language
             });
 
             allData = await fetchAllData();
             loadThemes();
+            loadYears(); // Call the new function to load years
             
             // Check for a set ID in the URL on initial page load
             const urlParams = new URLSearchParams(window.location.search);
@@ -601,7 +657,7 @@
             if (initialSetId) {
                 showSetDetail(initialSetId);
             } else {
-                loadSets("");
+                loadSets("", "", ""); // Pass empty values for initial load
                 setLanguage('en');
             }
         });
