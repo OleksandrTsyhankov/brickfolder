@@ -1,32 +1,10 @@
 name: Test Workflow
 
-on:
-  push:
-    branches-ignore:
-      - test
-  workflow_dispatch:
+on: push
 
 jobs:
-  gradle-build:
+  prod-check:
+    if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
-    name: Gradle Build
     steps:
-      - uses: actions/checkout@v4
-      - name: Run Gradle Build
-        run: |
-          echo "gradle --version"
-          echo "gradle check"
-
-
-
-  docker-build:
-    runs-on: ubuntu-latest
-    needs: gradle-build
-    name: Docker Container Build
-    steps:
-      - name: Run Gradle Build
-        uses: ./.github/workflows/docker.yml
-        with:
-          app-name: ${{ vars.APP_NAME }}
-          app-id: ${{ vars.APP_ID }}
-          app-version: ${{ vars.APP_VERSION }}
+      - run: echo "Deploying to production server on branch $GITHUB_REF"
