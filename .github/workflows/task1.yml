@@ -1,26 +1,10 @@
 name: Test Workflow
 
-on:
-  push:
-    branches-ignore:
-      - main
-  workflow_dispatch:
+on: push
 
 jobs:
-  gradle-build:
-    name: Gradle Build
-    run: |
-      gradle --version
-      gradle check
-    uses: ./.github/workflows/.gradle-build.yml
-    with:
-      gradle-version: 8
-
-  docker-build:
-    needs: gradle-build
-    name: Docker Container Build
-    uses: ./.github/workflows/docker.yml
-    with:
-      app-name: "1"
-      app-id: "1"
-      app-version: "1"
+  checkout:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout this repository
+        uses: actions/checkout@v5
