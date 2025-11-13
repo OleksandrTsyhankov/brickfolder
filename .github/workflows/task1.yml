@@ -30,4 +30,3 @@ jobs:
           app-name: ${{ vars.APP_NAME }}
           app-id: ${{ vars.APP_ID }}
           app-version: ${{ vars.APP_VERSION }}
-
