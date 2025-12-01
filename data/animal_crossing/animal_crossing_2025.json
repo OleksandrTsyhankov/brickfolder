@@ -1,99 +1,171 @@
 {
   "ANIMAL CROSSING": [
     {
-      "id": "77051",
+      "id": "30703",
       "name": {
-        "en": "77051 K.K.'s Concert Stage",
-        "ua": "77051 Концертна сцена К.К."
+        "en": "30703 Julian's Beach Painting",
+        "ua": "30703 Пляжна картина Джуліана"
       },
       "description": {
-        "en": "Build the iconic stage where K.K. Slider performs his music for all the island residents.",
-        "ua": "Створіть культову сцену, де виконавець К.К. Слайдер грає свою музику для всіх мешканців острова."
+        "en": "A promotional polybag set featuring the horse Julian creating a customizable painting scene on the beach.",
+        "ua": "Промоційний полібег із конем Джуліаном, який створює настроювану сцену картини на пляжі."
       },
       "year": 2025,
-      "pieces": 196,
-      "minifigs": 2,
-      "age": "6+",
+      "pieces": 43,
+      "minifigs": 1,
+      "age": "4+",
       "videos": [
         {
-          "title": "77051 LEGO® Animal Crossing K.K.'s Concert Stage: Building instructions",
+          "title": "30703 LEGO® Animal Crossing Julian's Beach Painting: Building instructions",
           "link": "https://www.youtube.com/embed/O9zesiU7NTk?si=VfcuU6MWrd0epTUc"
         }
       ],
       "images": [
-        "https://images.brickset.com/sets/large/77051-1.jpg"
-      ]
-    },
-    {
-      "id": "77052",
-      "name": {
-        "en": "77052 Fishing Dock Adventure",
-        "ua": "77052 Пригоди на рибальському причалі"
-      },
-      "description": {
-        "en": "Join Isabelle and Marshal for a fun day of fishing and exploration at the village dock.",
-        "ua": "Приєднуйтесь до Ізабель та Маршала для веселого дня риболовлі та досліджень на сільському причалі."
-      },
-      "year": 2025,
-      "pieces": 170,
-      "minifigs": 2,
-      "age": "6+",
-      "videos": [
-        {
-          "title": "77052 LEGO® Animal Crossing Fishing Dock Adventure: Building instructions",
-          "link": "https://www.youtube.com/embed/O9zesiU7NTk?si=VfcuU6MWrd0epTUc"
-        }
-      ],
-      "images": [
-        "https://images.brickset.com/sets/large/77052-1.jpg"
+        "https://cdn.rebrickable.com/media/sets/30703-1.jpg"
       ]
     },
     {
       "id": "77053",
       "name": {
-        "en": "77053 Brewster's Cafe",
-        "ua": "77053 Кафе Брюстера"
+        "en": "77053 Stargazing with Celeste",
+        "ua": "77053 Спостереження за зірками з Селестою"
       },
       "description": {
-        "en": "Help Brewster serve up the perfect cup of coffee in this charming and detailed cafe build.",
-        "ua": "Допоможіть Брюстеру подати ідеальну чашку кави в цьому чарівному та деталізованому кафе."
+        "en": "Join Celeste the owl for a peaceful night of stargazing, featuring a telescope, moon and Star Fragment accessory.",
+        "ua": "Приєднуйтесь до сови Селести для спокійного нічного спостереження за зорями. Набір містить телескоп, місяць та аксесуар Зоряний Фрагмент."
       },
       "year": 2025,
-      "pieces": 292,
-      "minifigs": 2,
-      "age": "7+",
+      "pieces": 78,
+      "minifigs": 1,
+      "age": "6+",
       "videos": [
         {
-          "title": "77053 LEGO® Animal Crossing Brewster's Cafe: Building instructions",
+          "title": "77053 LEGO® Animal Crossing Stargazing with Celeste: Building instructions",
           "link": "https://www.youtube.com/embed/O9zesiU7NTk?si=VfcuU6MWrd0epTUc"
         }
       ],
       "images": [
-        "https://images.brickset.com/sets/large/77053-1.jpg"
+        "https://cdn.rebrickable.com/media/sets/77053-1.jpg"
       ]
     },
     {
       "id": "77054",
       "name": {
-        "en": "77054 New Horizons Shopping Street",
-        "ua": "77054 Торговельна вулиця New Horizons"
+        "en": "77054 Leif's Caravan & Garden Shop",
+        "ua": "77054 Караван та Садовий магазин Лейфа"
       },
       "description": {
-        "en": "Explore the busy shopping street featuring the Able Sisters' shop and Tom Nook's services.",
-        "ua": "Дослідіть жваву торговельну вулицю з магазином сестер Ейбл та послугами Тома Нука."
+        "en": "Help Leif the sloth run his mobile garden shop from his colorful caravan, complete with fresh produce and plant accessories.",
+        "ua": "Допоможіть лінивцю Лейфу керувати його мобільним садовим магазином-караваном, що комплектується свіжими овочами та аксесуарами для рослин. Включає мініфігурки Лейфа та Поппі."
       },
       "year": 2025,
-      "pieces": 682,
-      "minifigs": 5,
-      "age": "9+",
+      "pieces": 263,
+      "minifigs": 2,
+      "age": "6+",
       "videos": [
         {
-          "title": "77054 LEGO® Animal Crossing New Horizons Shopping Street: Building instructions",
+          "title": "77054 LEGO® Animal Crossing Leif's Caravan & Garden Shop: Building instructions",
           "link": "https://www.youtube.com/embed/O9zesiU7NTk?si=VfcuU6MWrd0epTUc"
         }
       ],
       "images": [
-        "https://images.brickset.com/sets/large/77054-1.jpg"
+        "https://cdn.rebrickable.com/media/sets/77054-1.jpg"
+      ]
+    },
+    {
+      "id": "77055",
+      "name": {
+        "en": "77055 Able Sisters Clothing Shop",
+        "ua": "77055 Магазин одягу сестер Ейбл"
+      },
+      "description": {
+        "en": "A detailed build of the iconic Able Sisters' clothing shop, featuring Mabel and Sasha, a sewing machine, and various outfit options.",
+        "ua": "Деталізована збірка культового магазину одягу сестер Ейбл, де працюють Мейбл та Саша, зі швейною машинкою та різноманітними варіантами одягу."
+      },
+      "year": 2025,
+      "pieces": 322,
+      "minifigs": 2,
+      "age": "7+",
+      "videos": [
+        {
+          "title": "77055 LEGO® Animal Crossing Able Sisters Clothing Shop: Building instructions",
+          "link": "https://www.youtube.com/embed/O9zesiU7NTk?si=VfcuU6MWrd0epTUc"
+        }
+      ],
+      "images": [
+        "https://cdn.rebrickable.com/media/sets/77055-1.jpg"
+      ]
+    },
+    {
+      "id": "77056",
+      "name": {
+        "en": "77056 Blathers's Museum Collection",
+        "ua": "77056 Колекція Музею Блезерса"
+      },
+      "description": {
+        "en": "The island museum, featuring Blathers and Lily, with exhibits for fossils (like a Triceratops), an aquarium, and possibly The Roost cafe.",
+        "ua": "Музей острова з Блезерсом та Лілі, який включає виставки скам'янілостей (наприклад, Трицератопса), акваріум та, можливо, кафе 'The Roost'."
+      },
+      "year": 2025,
+      "pieces": 543,
+      "minifigs": 2,
+      "age": "8+",
+      "videos": [
+        {
+          "title": "77056 LEGO® Animal Crossing Blathers's Museum Collection: Building instructions",
+          "link": "https://www.youtube.com/embed/O9zesiU7NTk?si=VfcuU6MWrd0epTUc"
+        }
+      ],
+      "images": [
+        "https://cdn.rebrickable.com/media/sets/77056-1.jpg"
+      ]
+    },
+    {
+      "id": "77057",
+      "name": {
+        "en": "77057 Creative Houses: Seasons of Fun",
+        "ua": "77057 Креативні будинки: Сезони розваг"
+      },
+      "description": {
+        "en": "A large set of customizable modular houses that can be rebuilt to reflect different seasons and include minifigures of Fang, Fuchsia, and Stitches.",
+        "ua": "Великий набір креативних модульних будинків, які можна перебудовувати відповідно до різних пір року та свят. Включає мініфігурки Фанга, Фуксії та Стітчеса."
+      },
+      "year": 2025,
+      "pieces": 814,
+      "minifigs": 3,
+      "age": "8+",
+      "videos": [
+        {
+          "title": "77057 LEGO® Animal Crossing Creative Houses: Seasons of Fun: Building instructions",
+          "link": "https://www.youtube.com/embed/O9zesiU7NTk?si=VfcuU6MWrd0epTUc"
+        }
+      ],
+      "images": [
+        "https://cdn.rebrickable.com/media/sets/77057-1.jpg"
+      ]
+    },
+    {
+      "id": "77058",
+      "name": {
+        "en": "77058 Goldie's Cosy House",
+        "ua": "77058 Затишний будинок Голді"
+      },
+      "description": {
+        "en": "Build Goldie the dog's charming, cosy house, featuring customizable furniture, a piano, and a picnic area outside.",
+        "ua": "Створіть чарівний затишний будинок собаки Голді з настроюваними меблями, фортепіано та зоною для пікніка надворі."
+      },
+      "year": 2025,
+      "pieces": 149,
+      "minifigs": 1,
+      "age": "6+",
+      "videos": [
+        {
+          "title": "77058 LEGO® Animal Crossing Goldie's Cosy House: Building instructions",
+          "link": "https://www.youtube.com/embed/O9zesiU7NTk?si=VfcuU6MWrd0epTUc"
+        }
+      ],
+      "images": [
+        "https://cdn.rebrickable.com/media/sets/77058-1.jpg"
       ]
     }
   ]

@@ -1,25 +1,19 @@
 {
-  "ONE PIECE": [
+  "ONE_PIECE": [
     {
       "id": "75636",
       "name": {
         "en": "75636 Windmill Village Hut",
-        "ua": "75636 Хатина у Вітряному Селі"
+        "ua": "75636 Хатина у Селищі Вітряків"
       },
       "description": {
-        "en": "Recreate the port bar and hut from Luffy's early life in Windmill Village where he meets Shanks and receives his iconic Straw Hat.",
-        "ua": "Відтворіть портовий бар та хатину з раннього життя Луффі у Вітряному Селі, де він познайомився з Шанксом та отримав свій культовий Солом'яний Капелюх."
+        "en": "Recreates the hut and beach setting in Foosha Village where Luffy grew up. Includes a bar counter, small boat, and a brick-built tree.",
+        "ua": "Відтворює хатину та пляж у Селищі Вітряків, де виріс Луффі. Включає барну стійку, невеликий човен і цегляне дерево."
       },
       "year": 2025,
       "pieces": 299,
       "minifigs": 3,
       "age": "8+",
-      "videos": [
-        {
-          "title": "75636 LEGO® ONE PIECE Windmill Village Hut: Building instructions",
-          "link": "https://www.youtube.com/embed/7ufTNDDPHcQ?si=pUvQJBP4w0OpEh2j"
-        }
-      ],
       "images": [
         "https://i.pinimg.com/736x/4e/3f/40/4e3f4065ef56a6c79158f4969b18d011.jpg",
         "https://i.pinimg.com/736x/f9/a5/d7/f9a5d7303ca21dc0e7bdffbb270189b8.jpg",
@@ -38,22 +32,16 @@
       "id": "75637",
       "name": {
         "en": "75637 Buggy the Clown's Circus Tent",
-        "ua": "75637 Цирковий намет клоуна Баггі"
+        "ua": "75637 Цирковий намет клоуна Баґґі"
       },
       "description": {
-        "en": "Build the massive circus tent where Buggy the Clown holds Nami and Zoro captive, featuring a cannon and a cage.",
-        "ua": "Побудуйте масивний цирковий намет, де клоун Баггі тримає в полоні Намі та Зоро, з гарматою та кліткою."
+        "en": "Features Buggy's circus tent, a cage, a catapult, and a target practice game.",
+        "ua": "Включає цирковий намет Баґґі, клітку, катапульту та гру для тренування влучності."
       },
       "year": 2025,
       "pieces": 573,
       "minifigs": 4,
       "age": "8+",
-      "videos": [
-        {
-          "title": "75637 LEGO® ONE PIECE Buggy the Clown's Circus Tent: Building instructions",
-          "link": "https://www.youtube.com/embed/HOcBJo-3IVo?si=JGicjdnRjfGl2m_V"
-        }
-      ],
       "images": [
         "https://i.pinimg.com/736x/4d/8e/70/4d8e705f4f2bd26dc233a9c4e4d44c11.jpg",
         "https://i.pinimg.com/736x/be/3c/f9/be3cf92e690019c1ff0cb6355a185cc1.jpg",
@@ -80,21 +68,15 @@
         "ua": "75638 Битва в Арлонґ-парку"
       },
       "description": {
-        "en": "Join the Straw Hat crew for an epic battle at Arlong Park's pagoda, featuring a 'blow-up' mechanism and specialized minifigures.",
-        "ua": "Приєднуйтесь до команди Солом'яного капелюха у сміливій місії у пагоді Арлонг-парку, щоб перемогти своїх ворогів. Набір включає механізм «вибуху» та спеціалізовані мініфігурки."
+        "en": "Recreates the epic showdown at Arlong Park. Features a collapsing pagoda, a 'Shark Attack' throne, a shooting gallery with stud-shooters, and Luffy with arm-lengthening pieces.",
+        "ua": "Відтворює епічну сутичку в Арлонґ-парку. Містить пагоду, що руйнується, трон 'Атака Акули', галерею для стрільби зі стад-шутерів і Луффі з елементами для подовження рук."
       },
       "year": 2025,
       "pieces": 926,
       "minifigs": 5,
-      "age": "9+",
-      "videos": [
-        {
-          "title": "75638 LEGO® ONE PIECE Battle at Arlong Park: Building instructions",
-          "link": "https://www.youtube.com/embed/O9zesiU7NTk?si=VfcuU6MWrd0epTUc"
-        }
-      ],
+      "age": "12+",
       "images": [
-        "https://images.brickset.com/sets/large/75638-1.jpg"
+        "https://cdn.rebrickable.com/media/sets/75638-1.jpg"
       ]
     },
     {
@@ -104,21 +86,15 @@
         "ua": "75639 Піратський корабель «Всюдихідний Меррі»"
       },
       "description": {
-        "en": "Build the iconic ship of the Straw Hat Pirates, the Going Merry, featuring the crew's cabin, kitchen, and the sheep figurehead.",
-        "ua": "Створіть культовий корабель Піратів Солом'яного Капелюха, «Всюдихідний Меррі», з деталізованою каютою, кухнею та фігурою барана на носі."
+        "en": "A detailed, brick-built model of the Straw Hat Pirates' iconic ship. Features a crew's cabin, kitchen, storage, and the sheep figurehead.",
+        "ua": "Деталізована, побудована з цеглинок модель легендарного корабля Піратів Солом'яного Капелюха. Включає каюту екіпажу, кухню, сховище та фігуру вівці на носі."
       },
       "year": 2025,
       "pieces": 1376,
       "minifigs": 5,
-      "age": "10+",
-      "videos": [
-        {
-          "title": "75639 LEGO® ONE PIECE The Going Merry Pirate Ship: Building instructions",
-          "link": "https://www.youtube.com/embed/jQ2L6qyNjzU?si=GicjdnRjfGl2m_V"
-        }
-      ],
+      "age": "14+",
       "images": [
-        "https://images.brickset.com/sets/large/75639-1.jpg"
+        "https://cdn.rebrickable.com/media/sets/75639-1.jpg"
       ]
     },
     {
@@ -128,45 +104,33 @@
         "ua": "75640 Плавучий ресторан «Бараті»"
       },
       "description": {
-        "en": "A large, detailed collector's model of the Baratie, the iconic ship-shaped restaurant, where Zoro duels Mihawk and Sanji joins the crew.",
-        "ua": "Масштабна колекційна модель культового плавучого ресторану «Бараті» у формі корабля, де відбуваються дуель Зоро з Міхоком та приєднання Санджі до команди."
+        "en": "A massive, detailed model of the iconic floating restaurant. Features a detailed and accessible interior, including the kitchen, Zeff's quarters, a treasure room, and Mihawk's distinctive boat.",
+        "ua": "Масштабна, деталізована модель культового плавучого ресторану. Має деталізований та доступний інтер'єр, включаючи кухню, приміщення Зеффа, скарбницю та відмітний човен Міхока."
       },
       "year": 2025,
       "pieces": 3402,
-      "minifigs": 10,
+      "minifigs": 12,
       "age": "18+",
-      "videos": [
-        {
-          "title": "75640 LEGO® ONE PIECE The Baratie Floating Restaurant: Building instructions",
-          "link": "https://www.youtube.com/embed/HOcBJo-3IVo?si=JGicjdnRjfGl2m_V"
-        }
-      ],
       "images": [
-        "https://images.brickset.com/sets/large/75640-1.jpg"
+        "https://cdn.rebrickable.com/media/sets/75640-1.jpg"
       ]
     },
     {
       "id": "6601555",
       "name": {
-        "en": "6601555 Gum Gum Fruit",
-        "ua": "6601555 Плід Гума-Гум"
+        "en": "6601555 Gum Gum Fruit (Promotional)",
+        "ua": "6601555 Плід Ґуму-Ґуму (Промо)"
       },
       "description": {
-        "en": "A small, promotional brick-built model of the Devil Fruit eaten by Monkey D. Luffy. It was available as an in-store build.",
-        "ua": "Невелика, промо-модель Диявольського Плоду, який з'їв Монкі Д. Луффі. Була доступна як збірка в магазинах."
+        "en": "A promotional, large-scale, brick-built model of the Gum-Gum Fruit (Devil Fruit).",
+        "ua": "Промоційна, збудована з цеглинок модель Плоду Ґуму-Ґуму (диявольського фрукта) у великому масштабі."
       },
       "year": 2025,
       "pieces": 57,
       "minifigs": 0,
-      "age": "4+",
-      "videos": [
-        {
-          "title": "6601555 LEGO® ONE PIECE Gum Gum Fruit: Building instructions",
-          "link": "https://www.youtube.com/embed/O9zesiU7NTk?si=VfcuU6MWrd0epTUc"
-        }
-      ],
+      "age": "6+",
       "images": [
-        "https://images.brickset.com/sets/small/GUMGUM-1.jpg"
+        "Image URL not found in sets.csv"
       ]
     }
   ]
