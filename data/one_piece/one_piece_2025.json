@@ -42,6 +42,12 @@
       "pieces": 573,
       "minifigs": 4,
       "age": "8+",
+      "videos": [
+        {
+          "title": "75637 LEGO® ONE PIECE Buggy the Clown's Circus Tent: Building instructions",
+          "link": "https://www.youtube.com/embed/HOcBJo-3IVo?si=JGicjdnRjfGl2m_V"
+        }
+      ],
       "images": [
         "https://i.pinimg.com/736x/4d/8e/70/4d8e705f4f2bd26dc233a9c4e4d44c11.jpg",
         "https://i.pinimg.com/736x/be/3c/f9/be3cf92e690019c1ff0cb6355a185cc1.jpg",
@@ -74,7 +80,13 @@
       "year": 2025,
       "pieces": 926,
       "minifigs": 5,
-      "age": "12+",
+      "age": "9+",
+      "videos": [
+        {
+          "title": "75638 LEGO® ONE PIECE Battle at Arlong Park: Building instructions",
+          "link": "https://www.youtube.com/embed/O9zesiU7NTk?si=VfcuU6MWrd0epTUc"
+        }
+      ],
       "images": [
         "https://cdn.rebrickable.com/media/sets/75638-1.jpg"
       ]
@@ -92,7 +104,13 @@
       "year": 2025,
       "pieces": 1376,
       "minifigs": 5,
-      "age": "14+",
+      "age": "10+",
+      "videos": [
+        {
+          "title": "75639 LEGO® ONE PIECE The Going Merry Pirate Ship: Building instructions",
+          "link": "https://www.youtube.com/embed/jQ2L6qyNjzU?si=GicjdnRjfGl2m_V"
+        }
+      ],
       "images": [
         "https://cdn.rebrickable.com/media/sets/75639-1.jpg"
       ]
@@ -111,6 +129,12 @@
       "pieces": 3402,
       "minifigs": 12,
       "age": "18+",
+      "videos": [
+        {
+          "title": "75640 LEGO® ONE PIECE The Baratie Floating Restaurant: Building instructions",
+          "link": "https://www.youtube.com/embed/HOcBJo-3IVo?si=JGicjdnRjfGl2m_V"
+        }
+      ],
       "images": [
         "https://cdn.rebrickable.com/media/sets/75640-1.jpg"
       ]
@@ -128,7 +152,13 @@
       "year": 2025,
       "pieces": 57,
       "minifigs": 0,
-      "age": "6+",
+      "age": "4+",
+      "videos": [
+        {
+          "title": "6601555 LEGO® ONE PIECE Gum Gum Fruit: Building instructions",
+          "link": "https://www.youtube.com/embed/O9zesiU7NTk?si=VfcuU6MWrd0epTUc"
+        }
+      ],
       "images": [
         "Image URL not found in sets.csv"
       ]
