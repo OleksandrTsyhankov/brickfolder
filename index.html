@@ -362,16 +362,37 @@
                 }
             };
 
-            // This array holds the filenames for each theme's data.
-            // In a real-world app, this would likely be fetched from an API.
-            const themeFiles = [
-                "one_piece.json",
-                "animal_crossing.json"
-            ];
-
-            // This function fetches data from all theme-specific JSON files.
+            // Функція для завантаження даних
             const fetchAllData = async () => {
                 loader.classList.remove('hidden');
+
+                let themeFiles = [];
+                try {
+                    // Крок 1: Намагаємося завантажити список імен файлів з data/file_list.json.
+                    // У браузері неможливо напряму прочитати вміст папки. Цей файл є динамічним списком імен JSON-файлів.
+                    const listResponse = await fetch('./data/file_list.json');
+                    if (!listResponse.ok) {
+                         // Якщо файл-список не знайдено, використовуємо фіктивний список як запасний варіант
+                         // і виводимо попередження в консоль, щоб користувач створив data/file_list.json.
+                        console.warn("Could not find './data/file_list.json'. Please ensure this file exists and lists all your data JSONs. Using a mock list for demonstration.");
+                        // Запасний список файлів, якщо data/file_list.json не існує:
+                        themeFiles = ["one_piece/one_piece_2025.json"]; 
+                    } else {
+                        themeFiles = await listResponse.json();
+                        if (!Array.isArray(themeFiles)) {
+                            console.error("The content of file_list.json is not a valid array.");
+                            themeFiles = [];
+                        }
+                    }
+                } catch (error) {
+                    console.error("Error fetching file list:", error);
+                    loader.classList.add('hidden');
+                    return {};
+                }
+                
+                // Крок 2: Завантажуємо всі файли даних зі списку themeFiles.
+                // Примітка: оскільки themeFiles тепер містить повні шляхи (наприклад, 'one_piece/one_piece_sets.json'), 
+                // виклик fetch(`./data/${fileName}`) автоматично оброблятиме підпапки.
                 const fetchPromises = themeFiles.map(fileName => 
                     fetch(`./data/${fileName}`).then(response => {
                         if (!response.ok) {
@@ -379,15 +400,15 @@
                         }
                         return response.json();
                     }).catch(error => {
-                        console.error(error);
-                        // Return an empty object for a failed fetch to prevent the app from crashing.
+                        console.error(`Error loading data from ${fileName}:`, error);
+                        // Повертаємо порожній об'єкт для файлу, що не завантажився.
                         return {};
                     })
                 );
 
                 const results = await Promise.all(fetchPromises);
                 
-                // Merge all the data from the fetched files into a single object.
+                // Крок 3: Об'єднуємо всі дані в єдиний об'єкт.
                 let mergedData = {};
                 results.forEach(data => {
                     Object.assign(mergedData, data);
