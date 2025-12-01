@@ -1,0 +1,172 @@
+{
+  "ANIMAL CROSSING": [
+    {
+      "id": "30703",
+      "name": {
+        "en": "30703 Julian's Beach Painting (Polybag)",
+        "ua": "30703 Пляжний Живопис Джуліана (Полібег)"
+      },
+      "description": {
+        "en": "Julian's Beach Painting",
+        "ua": "Пляжний Живопис Джуліана"
+      },
+      "year": 2025,
+      "pieces": 43,
+      "minifigs": 1,
+      "age": "6+",
+      "videos": [
+        {
+          "title": "30703 LEGO® Animal Crossing Julian's Beach Painting: GWP Overview",
+          "link": "https://www.youtube.com/@BrickFolder"
+        }
+      ],
+      "images": [
+        "https://images.brickset.com/sets/large/30703-1.jpg"
+      ]
+    },
+    {
+      "id": "77053",
+      "name": {
+        "en": "77053 Stargazing with Celeste",
+        "ua": "77053 Споглядання Зірок з Селестою"
+      },
+      "description": {
+        "en": "Stargazing with Celeste",
+        "ua": "Споглядання Зірок з Селестою"
+      },
+      "year": 2025,
+      "pieces": 78,
+      "minifigs": 1,
+      "age": "6+",
+      "videos": [
+        {
+          "title": "77053 LEGO® Animal Crossing Stargazing with Celeste: Set Review",
+          "link": "https://www.youtube.com/@BrickFolder"
+        }
+      ],
+      "images": [
+        "https://images.brickset.com/sets/large/77053-1.jpg"
+      ]
+    },
+    {
+      "id": "77054",
+      "name": {
+        "en": "77054 Leif's Caravan & Garden Shop",
+        "ua": "77054 Караван та Садовий Магазин Лейфа"
+      },
+      "description": {
+        "en": "Leif's Caravan & Garden Shop",
+        "ua": "Караван та Садовий Магазин Лейфа"
+      },
+      "year": 2025,
+      "pieces": 263,
+      "minifigs": 2,
+      "age": "6+",
+      "videos": [
+        {
+          "title": "77054 LEGO® Animal Crossing Leif's Caravan: Official Reveal",
+          "link": "https://www.youtube.com/@BrickFolder"
+        }
+      ],
+      "images": [
+        "https://images.brickset.com/sets/large/77054-1.jpg"
+      ]
+    },
+    {
+      "id": "77055",
+      "name": {
+        "en": "77055 Able Sisters Clothing Shop",
+        "ua": "77055 Магазин Одягу Сестер Ейбл"
+      },
+      "description": {
+        "en": "Able Sisters Clothing Shop",
+        "ua": "Магазин Одягу Сестер Ейбл"
+      },
+      "year": 2025,
+      "pieces": 322,
+      "minifigs": 2,
+      "age": "6+",
+      "videos": [
+        {
+          "title": "77055 LEGO® Animal Crossing Able Sisters: Designer Interview",
+          "link": "https://www.youtube.com/@BrickFolder"
+        }
+      ],
+      "images": [
+        "https://images.brickset.com/sets/large/77055-1.jpg"
+      ]
+    },
+    {
+      "id": "77058",
+      "name": {
+        "en": "77058 Goldie's Cosy House",
+        "ua": "77058 Затишний Будинок Голді"
+      },
+      "description": {
+        "en": "Goldie's Cosy House",
+        "ua": "Затишний Будинок Голді"
+      },
+      "year": 2025,
+      "pieces": 149,
+      "minifigs": 1,
+      "age": "6+",
+      "videos": [
+        {
+          "title": "77058 LEGO® Animal Crossing Goldie's House: Speed Build",
+          "link": "https://www.youtube.com/@BrickFolder"
+        }
+      ],
+      "images": [
+        "https://images.brickset.com/sets/large/77058-1.jpg"
+      ]
+    },
+    {
+      "id": "77056",
+      "name": {
+        "en": "77056 Blathers's Museum Collection",
+        "ua": "77056 Колекція Музею Блезерса"
+      },
+      "description": {
+        "en": "Blathers's Museum Collection",
+        "ua": "Колекція Музею Блезерса"
+      },
+      "year": 2025,
+      "pieces": 543,
+      "minifigs": 2,
+      "age": "8+",
+      "videos": [
+        {
+          "title": "77056 LEGO® Animal Crossing Blathers's Museum: First Look",
+          "link": "https://www.youtube.com/@BrickFolder"
+        }
+      ],
+      "images": [
+        "https://images.brickset.com/sets/large/77056-1.jpg"
+      ]
+    },
+    {
+      "id": "77057",
+      "name": {
+        "en": "77057 Creative Houses: Seasons of Fun",
+        "ua": "77057 Креативні Будинки: Сезони Розваг"
+      },
+      "description": {
+        "en": "Creative Houses: Seasons of Fun",
+        "ua": "Креативні Будинки: Сезони Розваг"
+      },
+      "year": 2025,
+      "pieces": 814,
+      "minifigs": 3,
+      "age": "8+",
+      "videos": [
+        {
+          "title": "77057 LEGO® Animal Crossing Creative Houses: Building Options",
+          "link": "https://www.youtube.com/@BrickFolder"
+        }
+      ],
+      "images": [
+        "https://images.brickset.com/sets/large/77057-1.jpg"
+      ]
+    }
+  ]
+}
