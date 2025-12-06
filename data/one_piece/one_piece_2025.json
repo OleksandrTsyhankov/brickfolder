@@ -1,5 +1,5 @@
 {
-  "ONE_PIECE": [
+  "ONE PIECE": [
     {
       "id": "75636",
       "name": {
@@ -14,6 +14,12 @@
       "pieces": 299,
       "minifigs": 3,
       "age": "8+",
+      "videos": [
+        {
+          "title": "75636 LEGO® ONE PIECE Windmill Village Hut: Building instructions",
+          "link": "https://www.youtube.com/embed/7ufTNDDPHcQ?si=pUvQJBP4w0OpEh2j"
+        }
+      ],
       "images": [
         "https://i.pinimg.com/736x/4e/3f/40/4e3f4065ef56a6c79158f4969b18d011.jpg",
         "https://i.pinimg.com/736x/f9/a5/d7/f9a5d7303ca21dc0e7bdffbb270189b8.jpg",
@@ -160,7 +166,7 @@
         }
       ],
       "images": [
-        "Image URL not found in sets.csv"
+        "https://images.brickset.com/sets/small/GUMGUM-1.jpg"
       ]
     }
   ]
